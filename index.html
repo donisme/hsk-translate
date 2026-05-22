@@ -4,602 +4,290 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>汉语练习 · Luyện Dịch Việt–Trung HSK</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&family=Lora:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0f0e0c;
-  --surface: #1a1916;
-  --card: #211f1b;
-  --border: #2e2b26;
-  --border2: #3d3930;
-  --text: #f0ead8;
-  --text2: #a09880;
-  --text3: #5a5548;
-  --gold: #c9a84c;
-  --gold2: #e8c96a;
-  --red: #c0392b;
-  --red2: #e05a4e;
-  --green: #2ecc71;
-  --radius: 14px;
+  --bg: #fdf6f0;
+  --surface: #fff9f5;
+  --card: #ffffff;
+  --border: #f0e4d8;
+  --border2: #e8d5c4;
+  --text: #3d2c20;
+  --text2: #8a6f5e;
+  --text3: #b89d8d;
+  --accent: #e8845a;
+  --accent2: #f0a07a;
+  --accent-light: #fdeee6;
+  --radius: 16px;
 
-  --hsk1: #4a9eff;
-  --hsk2: #2ecc71;
-  --hsk3: #f39c12;
-  --hsk4: #9b59b6;
-  --hsk5: #e74c3c;
-  --hsk6: #c9a84c;
+  /* pastel level colors */
+  --p1: #a8d8f0; --p1bg: #eaf6fd; --p1text: #2d7da8;
+  --p2: #a8e6c8; --p2bg: #e8f9f0; --p2text: #2a7a52;
+  --p3: #ffd6a0; --p3bg: #fff5e6; --p3text: #a05f10;
+  --p4: #d4b8f0; --p4bg: #f3ecfc; --p4text: #6b3db0;
+  --p5: #ffb8b8; --p5bg: #fff0f0; --p5text: #b03030;
+  --p6: #f0d890; --p6bg: #fdf7e0; --p6text: #906a00;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* Ambient glow */
-.ambient {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  opacity: 0.12;
-  z-index: 0;
-}
-.amb1 { width: 500px; height: 500px; background: var(--gold); top: -100px; right: -100px; }
-.amb2 { width: 400px; height: 400px; background: #c0392b; bottom: -100px; left: -100px; }
+/* Soft background blobs */
+.ambient { position: fixed; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; }
+.amb1 { width: 450px; height: 450px; background: #ffd6c8; opacity: 0.45; top: -120px; right: -120px; }
+.amb2 { width: 380px; height: 380px; background: #c8e8ff; opacity: 0.35; bottom: -80px; left: -80px; }
+.amb3 { width: 300px; height: 300px; background: #d4f0c8; opacity: 0.3; top: 40%; left: 60%; }
 
-/* Layout */
 .wrap { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 0 1.5rem 5rem; }
 
 /* Header */
 header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.75rem 0 1.5rem;
-  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 0 1.25rem;
+  border-bottom: 1.5px solid var(--border);
   margin-bottom: 2rem;
 }
-
-.brand {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, #ffb347, #e8845a);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Noto Serif SC', serif; font-size: 16px; color: #fff; font-weight: 700;
 }
-
-.brand-zh {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: 0.05em;
-}
-
-.brand-vi {
-  font-size: 13px;
-  color: var(--text2);
-  letter-spacing: 0.04em;
-}
-
+.brand-zh { font-family: 'Nunito', sans-serif; font-size: 17px; font-weight: 800; color: var(--text); }
+.brand-vi { font-size: 12px; color: var(--text3); }
 .streak-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  padding: 5px 14px;
-  font-size: 13px;
-  color: var(--text2);
+  display: flex; align-items: center; gap: 5px;
+  background: #fff8f0; border: 1.5px solid #ffd6b0;
+  border-radius: 20px; padding: 5px 14px; font-size: 13px;
+  color: var(--text2); font-weight: 600;
 }
-.streak-num { color: var(--gold2); font-weight: 500; }
+.streak-num { color: #e8845a; }
 
 /* Level selector */
-.level-section { margin-bottom: 2rem; }
-
-.level-label {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 0.75rem;
-}
-
-.level-grid {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+.level-section { margin-bottom: 1.75rem; }
+.level-label { font-size: 11px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.75rem; font-weight: 700; }
+.level-grid { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .level-btn {
-  flex: 1;
-  min-width: 80px;
-  padding: 10px 8px;
-  border-radius: 10px;
-  border: 1px solid var(--border2);
-  background: var(--surface);
-  color: var(--text2);
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  text-align: center;
-  transition: all 0.2s;
-  position: relative;
-  overflow: hidden;
+  flex: 1; min-width: 78px; padding: 10px 6px;
+  border-radius: 12px; border: 1.5px solid var(--border2);
+  background: var(--card); color: var(--text2);
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+  font-size: 12px; font-weight: 600; text-align: center;
+  transition: all 0.2s; position: relative; overflow: hidden;
 }
+.lv-badge { font-weight: 800; font-size: 15px; display: block; margin-bottom: 2px; }
+.lv-name { display: block; font-size: 10px; font-weight: 500; opacity: 0.7; }
 
-.level-btn .lv-name { display: block; font-size: 11px; opacity: 0.6; margin-top: 2px; }
+.level-btn[data-lv="1"] { --lc: var(--p1); --lbg: var(--p1bg); --lt: var(--p1text); }
+.level-btn[data-lv="2"] { --lc: var(--p2); --lbg: var(--p2bg); --lt: var(--p2text); }
+.level-btn[data-lv="3"] { --lc: var(--p3); --lbg: var(--p3bg); --lt: var(--p3text); }
+.level-btn[data-lv="4"] { --lc: var(--p4); --lbg: var(--p4bg); --lt: var(--p4text); }
+.level-btn[data-lv="5"] { --lc: var(--p5); --lbg: var(--p5bg); --lt: var(--p5text); }
+.level-btn[data-lv="6"] { --lc: var(--p6); --lbg: var(--p6bg); --lt: var(--p6text); }
 
-.level-btn::before {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  opacity: 0;
-  transition: opacity 0.2s;
+.level-btn:hover { background: var(--lbg); border-color: var(--lc); color: var(--lt); }
+.level-btn.active {
+  background: var(--lbg); border-color: var(--lc);
+  color: var(--lt);
+  box-shadow: 0 3px 12px -2px var(--lc);
 }
+.level-btn.active .lv-badge { color: var(--lt); }
 
-.level-btn:hover { border-color: var(--border2); color: var(--text); background: var(--card); }
-
-.level-btn.active { color: var(--text); border-color: transparent; }
-
-.level-btn[data-lv="1"] { --lc: var(--hsk1); }
-.level-btn[data-lv="2"] { --lc: var(--hsk2); }
-.level-btn[data-lv="3"] { --lc: var(--hsk3); }
-.level-btn[data-lv="4"] { --lc: var(--hsk4); }
-.level-btn[data-lv="5"] { --lc: var(--hsk5); }
-.level-btn[data-lv="6"] { --lc: var(--hsk6); }
-
-.level-btn::before { background: var(--lc); }
-.level-btn.active { background: var(--card); border-color: var(--lc); box-shadow: 0 0 16px -4px var(--lc); }
-.level-btn.active::before { opacity: 1; }
-.level-btn.active .lv-badge { color: var(--lc); }
-
-.lv-badge { font-weight: 700; font-size: 16px; display: block; margin-bottom: 2px; }
+/* Set buttons */
+.set-row { display: flex; align-items: center; gap: 8px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.set-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; }
+.set-btn {
+  padding: 4px 14px; border-radius: 20px;
+  border: 1.5px solid var(--border2); background: transparent;
+  color: var(--text2); cursor: pointer; font-size: 12px; font-weight: 600;
+  font-family: 'Nunito', sans-serif; transition: all 0.2s;
+}
+.set-btn.active, .set-btn:hover {
+  background: var(--accent-light); color: var(--accent); border-color: var(--accent2);
+}
 
 /* Progress */
-.progress-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.5rem;
-}
-.prog-label { font-size: 12px; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; }
-.prog-count { font-size: 13px; color: var(--text2); }
-
-.progress-track {
-  height: 2px;
-  background: var(--border);
-  border-radius: 1px;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-}
+.progress-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+.prog-label { font-size: 11px; color: var(--text3); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+.prog-count { font-size: 13px; color: var(--text2); font-weight: 600; }
+.progress-track { height: 6px; background: var(--border); border-radius: 4px; margin-bottom: 1.5rem; overflow: hidden; }
 .progress-fill {
-  height: 100%;
-  border-radius: 1px;
-  background: var(--lc, var(--gold));
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
   transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* Main card */
+/* Exercise card */
 .ex-card {
   background: var(--card);
-  border: 1px solid var(--border2);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius);
   padding: 2rem;
   margin-bottom: 1.25rem;
-  animation: cardIn 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 4px 24px rgba(200,140,100,0.08);
+  animation: cardIn 0.3s cubic-bezier(0.4,0,0.2,1);
 }
+@keyframes cardIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
+.card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .topic-tag {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  background: rgba(201,168,76,0.1);
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,0.2);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 20px;
+  background: var(--accent-light); color: var(--accent);
+  border: 1.5px solid #fdd0bb;
 }
-
-.card-num {
-  font-size: 12px;
-  color: var(--text3);
-}
+.card-num { font-size: 12px; color: var(--text3); font-weight: 600; }
 
 .vi-text {
-  font-family: 'DM Serif Display', serif;
-  font-size: 22px;
-  line-height: 1.5;
-  color: var(--text);
-  margin-bottom: 1.75rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border);
+  font-family: 'Lora', serif; font-size: 21px; line-height: 1.6;
+  color: var(--text); margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem; border-bottom: 1.5px dashed var(--border2);
 }
 
-.input-label {
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-bottom: 0.6rem;
-}
-
+.input-label { font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text3); margin-bottom: 0.6rem; font-weight: 700; }
 .input-row { display: flex; gap: 10px; }
 
 input[type="text"] {
-  flex: 1;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  padding: 11px 14px;
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 10px;
-  color: var(--text);
-  outline: none;
+  flex: 1; font-family: 'Noto Serif SC', serif; font-size: 17px;
+  padding: 11px 15px; background: var(--surface);
+  border: 1.5px solid var(--border2); border-radius: 12px;
+  color: var(--text); outline: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
-input[type="text"]::placeholder { color: var(--text3); font-size: 15px; font-family: 'DM Sans', sans-serif; }
-input[type="text"]:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+input[type="text"]::placeholder { color: var(--text3); font-size: 14px; font-family: 'Nunito', sans-serif; }
+input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(232,132,90,0.12); }
 
 .btn {
-  padding: 11px 18px;
-  border-radius: 10px;
-  border: 1px solid var(--border2);
-  background: var(--surface);
-  color: var(--text2);
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: all 0.2s;
+  padding: 11px 18px; border-radius: 12px;
+  border: 1.5px solid var(--border2); background: var(--surface);
+  color: var(--text2); cursor: pointer;
+  font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 600;
+  white-space: nowrap; transition: all 0.2s;
 }
-.btn:hover { color: var(--text); border-color: var(--gold); }
-.btn:disabled { opacity: 0.3; cursor: default; }
-
+.btn:hover { color: var(--accent); border-color: var(--accent2); background: var(--accent-light); }
+.btn:disabled { opacity: 0.35; cursor: default; }
 .btn-primary {
-  background: var(--gold);
-  color: #1a1610;
-  border-color: var(--gold);
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; border-color: transparent; font-weight: 700;
+  box-shadow: 0 3px 10px rgba(232,132,90,0.3);
 }
-.btn-primary:hover { background: var(--gold2); border-color: var(--gold2); color: #1a1610; }
+.btn-primary:hover { background: linear-gradient(135deg, #d4723e, var(--accent)); color: #fff; border-color: transparent; box-shadow: 0 4px 14px rgba(232,132,90,0.4); }
 
-/* Answer reveal */
+/* Answer box */
 .answer-box {
-  margin-top: 1.25rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--surface);
-  border-radius: 10px;
-  border-left: 3px solid var(--gold);
-  display: none;
-  animation: fadeIn 0.25s ease;
+  margin-top: 1.25rem; padding: 1.25rem 1.5rem;
+  background: #fffaf7; border-radius: 12px;
+  border-left: 4px solid var(--accent);
+  border-top: 1.5px solid var(--border);
+  border-right: 1.5px solid var(--border);
+  border-bottom: 1.5px solid var(--border);
+  display: none; animation: fadeIn 0.25s ease;
 }
 .answer-box.show { display: block; }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.ans-zh { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+.ans-py { font-size: 14px; color: var(--accent); margin-bottom: 12px; font-style: italic; font-weight: 600; }
 
-.ans-zh {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 23px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
-  line-height: 1.5;
-}
-
-.ans-py {
-  font-size: 14px;
-  color: var(--gold);
-  margin-bottom: 10px;
-  font-style: italic;
-  opacity: 0.85;
-}
-
-.ans-vocab {
-  margin-bottom: 8px;
-}
-.vocab-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text3);
-  margin-bottom: 5px;
+.vocab-label, .grammar-label {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text3); margin-bottom: 5px; display: block; font-weight: 700;
 }
 .vocab-item {
-  display: inline-block;
-  font-size: 13px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.15);
-  border-radius: 6px;
-  padding: 3px 10px;
-  margin: 3px 4px 3px 0;
-  color: var(--text2);
-  line-height: 1.6;
+  display: inline-block; font-size: 13px;
+  background: #fff0e8; border: 1.5px solid #fdd0bb;
+  border-radius: 8px; padding: 3px 10px; margin: 3px 4px 3px 0;
+  color: var(--text2); line-height: 1.6; font-weight: 600;
 }
-.vocab-item strong { color: var(--gold2); font-weight: 500; }
+.vocab-item strong { color: var(--accent); font-weight: 700; }
 
 .ans-grammar {
-  font-size: 13px;
-  color: var(--text2);
-  background: rgba(255,255,255,0.03);
-  border-radius: 8px;
-  padding: 8px 12px;
-  line-height: 1.7;
-  border: 1px solid var(--border);
-}
-.grammar-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text3);
-  display: block;
-  margin-bottom: 4px;
+  font-size: 13px; color: var(--text2); font-weight: 500;
+  background: #f6f2ff; border-radius: 10px; padding: 9px 13px;
+  line-height: 1.7; border: 1.5px solid #e4d8f8; margin-top: 10px;
 }
 
 /* Nav */
-.nav-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-
-.dots {
-  display: flex;
-  gap: 5px;
-}
-.dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--border2);
-  transition: all 0.3s;
-}
-.dot.done { background: var(--gold); opacity: 0.5; }
-.dot.active { background: var(--gold2); transform: scale(1.5); }
-
-/* Loading state */
-.loading-overlay {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1rem;
-  gap: 1rem;
-}
-.loading-overlay.show { display: flex; }
-
-.spinner {
-  width: 36px; height: 36px;
-  border: 2px solid var(--border2);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.loading-text {
-  font-size: 14px;
-  color: var(--text2);
-  font-family: 'Noto Serif SC', serif;
-}
-.loading-sub { font-size: 12px; color: var(--text3); margin-top: 2px; font-family: 'DM Sans', sans-serif; }
-
-/* Error */
-.error-box {
-  display: none;
-  background: rgba(192,57,43,0.1);
-  border: 1px solid rgba(192,57,43,0.3);
-  border-radius: 10px;
-  padding: 1.25rem;
-  text-align: center;
-  color: var(--red2);
-  font-size: 14px;
-  line-height: 1.6;
-}
-.error-box.show { display: block; }
-.error-box .err-title { font-weight: 600; margin-bottom: 0.5rem; }
-.error-box input {
-  margin-top: 1rem;
-  font-size: 14px;
-  background: rgba(255,255,255,0.05);
-  padding: 8px 12px;
-  border: 1px solid rgba(192,57,43,0.3);
-  border-radius: 8px;
-  color: var(--text);
-  width: 100%;
-  font-family: 'DM Sans', sans-serif;
-}
+.nav-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.dots { display: flex; gap: 5px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border2); transition: all 0.3s; }
+.dot.done { background: #ffc0a0; }
+.dot.active { background: var(--accent); transform: scale(1.4); }
 
 /* Done screen */
-.done-screen {
-  display: none;
-  text-align: center;
-  padding: 3rem 1rem;
-  animation: cardIn 0.4s ease;
-}
+.done-screen { display: none; text-align: center; padding: 3rem 1rem; animation: cardIn 0.4s ease; }
 .done-screen.show { display: block; }
-
-.done-zh {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
-}
-.done-py { font-size: 14px; color: var(--text2); margin-bottom: 1.5rem; font-style: italic; }
-.done-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); margin-bottom: 0.5rem; }
-.done-sub { font-size: 14px; color: var(--text2); margin-bottom: 2rem; line-height: 1.7; }
-
-.done-stats {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
+.done-emoji { font-size: 52px; margin-bottom: 0.5rem; }
+.done-zh { font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; }
+.done-py { font-size: 14px; color: var(--text3); margin-bottom: 1.25rem; font-style: italic; }
+.done-title { font-family: 'Lora', serif; font-size: 22px; color: var(--text); margin-bottom: 0.5rem; font-weight: 600; }
+.done-sub { font-size: 14px; color: var(--text2); margin-bottom: 2rem; line-height: 1.7; font-weight: 500; }
+.done-stats { display: flex; justify-content: center; gap: 12px; margin-bottom: 2rem; flex-wrap: wrap; }
 .stat {
-  background: var(--card);
-  border: 1px solid var(--border2);
-  border-radius: 12px;
-  padding: 1rem 1.5rem;
-  min-width: 100px;
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 1rem 1.5rem; min-width: 100px;
+  box-shadow: 0 2px 10px rgba(200,140,100,0.07);
 }
-.stat-n { font-size: 28px; font-weight: 600; color: var(--gold); margin-bottom: 2px; }
-.stat-l { font-size: 12px; color: var(--text3); }
-
+.stat-n { font-size: 28px; font-weight: 800; color: var(--accent); margin-bottom: 2px; }
+.stat-l { font-size: 12px; color: var(--text3); font-weight: 600; }
 .done-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-
-/* API key banner */
-.api-banner {
-  background: rgba(201,168,76,0.07);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 13px;
-  color: var(--text2);
-  line-height: 1.6;
-  display: none;
-}
-.api-banner.show { display: block; }
-.api-banner strong { color: var(--gold); }
-.api-banner input {
-  margin-top: 0.75rem;
-  width: 100%;
-  font-size: 13px;
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 8px;
-  padding: 8px 12px;
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-}
-.api-banner input:focus { border-color: var(--gold); }
-.api-save {
-  margin-top: 8px;
-  padding: 7px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--gold);
-  background: transparent;
-  color: var(--gold);
-  cursor: pointer;
-  font-size: 13px;
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.2s;
-}
-.api-save:hover { background: rgba(201,168,76,0.1); }
 
 @media (max-width: 600px) {
   .vi-text { font-size: 18px; }
   .ans-zh { font-size: 19px; }
-  .level-btn { min-width: 60px; font-size: 12px; }
-  .lv-badge { font-size: 14px; }
+  .level-btn { min-width: 58px; }
+  .lv-badge { font-size: 13px; }
 }
 </style>
 </head>
 <body>
-
 <div class="ambient amb1"></div>
 <div class="ambient amb2"></div>
-
+<div class="ambient amb3"></div>
 <div class="wrap">
   <header>
     <div class="brand">
-      <span class="brand-zh">汉语练习</span>
-      <span class="brand-vi">Luyện Dịch Việt – Trung</span>
+      <div class="brand-icon">练</div>
+      <div>
+        <div class="brand-zh">Luyện Dịch Việt–Trung</div>
+        <div class="brand-vi">HSK 1 → 6 · Offline · Miễn phí</div>
+      </div>
     </div>
-    <div class="streak-pill">
-      🔥 Ngày thứ <span class="streak-num" id="streak">1</span>
-    </div>
+    <div class="streak-pill">🔥 Ngày <span class="streak-num" id="streak">1</span></div>
   </header>
 
-  <!-- API Key Banner -->
-  <div class="api-banner show" id="api-banner">
-    <strong>Nhập Anthropic API Key</strong> để app tự sinh câu mới vô hạn bằng AI.<br>
-    Key chỉ lưu trong máy bạn (localStorage), không gửi đi đâu khác.
-    <input type="password" id="api-key-input" placeholder="sk-ant-..." />
-    <button class="api-save" onclick="saveKey()">Lưu & bắt đầu →</button>
-  </div>
-
-  <!-- Level selector -->
   <div class="level-section">
     <div class="level-label">Chọn cấp độ</div>
     <div class="level-grid">
-      <button class="level-btn active" data-lv="1" onclick="setLevel(1,this)">
-        <span class="lv-badge">HSK1</span>
-        <span class="lv-name">Sơ cấp</span>
-      </button>
-      <button class="level-btn" data-lv="2" onclick="setLevel(2,this)">
-        <span class="lv-badge">HSK2</span>
-        <span class="lv-name">Cơ bản</span>
-      </button>
-      <button class="level-btn" data-lv="3" onclick="setLevel(3,this)">
-        <span class="lv-badge">HSK3</span>
-        <span class="lv-name">Trung cấp</span>
-      </button>
-      <button class="level-btn" data-lv="4" onclick="setLevel(4,this)">
-        <span class="lv-badge">HSK4</span>
-        <span class="lv-name">Trung cao</span>
-      </button>
-      <button class="level-btn" data-lv="5" onclick="setLevel(5,this)">
-        <span class="lv-badge">HSK5</span>
-        <span class="lv-name">Cao cấp</span>
-      </button>
-      <button class="level-btn" data-lv="6" onclick="setLevel(6,this)">
-        <span class="lv-badge">HSK6</span>
-        <span class="lv-name">Thành thạo</span>
-      </button>
+      <button class="level-btn active" data-lv="1" onclick="setLevel(1,this)"><span class="lv-badge">HSK1</span><span class="lv-name">Sơ cấp</span></button>
+      <button class="level-btn" data-lv="2" onclick="setLevel(2,this)"><span class="lv-badge">HSK2</span><span class="lv-name">Cơ bản</span></button>
+      <button class="level-btn" data-lv="3" onclick="setLevel(3,this)"><span class="lv-badge">HSK3</span><span class="lv-name">Trung cấp</span></button>
+      <button class="level-btn" data-lv="4" onclick="setLevel(4,this)"><span class="lv-badge">HSK4</span><span class="lv-name">Trung cao</span></button>
+      <button class="level-btn" data-lv="5" onclick="setLevel(5,this)"><span class="lv-badge">HSK5</span><span class="lv-name">Cao cấp</span></button>
+      <button class="level-btn" data-lv="6" onclick="setLevel(6,this)"><span class="lv-badge">HSK6</span><span class="lv-name">Thành thạo</span></button>
     </div>
   </div>
 
-  <!-- Progress -->
+  <div class="set-row">
+    <span class="set-label">Bộ:</span>
+    <div id="set-btns"></div>
+  </div>
+
   <div class="progress-row">
     <span class="prog-label">Tiến độ</span>
-    <span class="prog-count" id="prog-text">— / 10</span>
+    <span class="prog-count" id="prog-text">1 / 10</span>
   </div>
-  <div class="progress-track">
-    <div class="progress-fill" id="prog-fill" style="width:0%"></div>
-  </div>
+  <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:10%"></div></div>
 
-  <!-- Loading -->
-  <div class="loading-overlay" id="loading">
-    <div class="spinner"></div>
-    <div>
-      <div class="loading-text">AI đang tạo câu luyện...</div>
-      <div class="loading-sub">Vui lòng đợi trong giây lát</div>
-    </div>
-  </div>
-
-  <!-- Error -->
-  <div class="error-box" id="error-box">
-    <div class="err-title">⚠ Không thể tạo câu</div>
-    <div id="error-msg">Kiểm tra API key và kết nối mạng.</div>
-    <button class="btn btn-primary" style="margin-top:1rem" onclick="loadSet()">Thử lại</button>
-  </div>
-
-  <!-- Exercise -->
-  <div id="exercise-area" style="display:none">
+  <div id="exercise-area">
     <div class="ex-card" id="ex-card">
       <div class="card-top">
         <span class="topic-tag" id="topic-tag">—</span>
@@ -614,17 +302,14 @@ input[type="text"]:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba
       <div class="answer-box" id="answer-box">
         <div class="ans-zh" id="ans-zh"></div>
         <div class="ans-py" id="ans-py"></div>
-        <div class="ans-vocab">
-          <div class="vocab-label">Từ vựng</div>
-          <div id="ans-vocab"></div>
-        </div>
+        <div class="vocab-label">Từ vựng</div>
+        <div id="ans-vocab"></div>
         <div class="ans-grammar">
           <span class="grammar-label">Ngữ pháp</span>
           <span id="ans-grammar"></span>
         </div>
       </div>
     </div>
-
     <div class="nav-row">
       <button class="btn" id="btn-prev" onclick="prev()">← Trước</button>
       <div class="dots" id="dots"></div>
@@ -632,149 +317,332 @@ input[type="text"]:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba
     </div>
   </div>
 
-  <!-- Done -->
   <div class="done-screen" id="done-screen">
+    <div class="done-emoji">🌸</div>
     <div class="done-zh">很好！</div>
     <div class="done-py">Hěn hǎo! — Rất tốt!</div>
-    <div class="done-title">Hoàn thành 10 câu!</div>
-    <div class="done-sub">Bạn đã luyện xong bộ câu hôm nay.<br>Nhấn "Bộ mới" để AI tạo thêm 10 câu ngay lập tức.</div>
+    <div class="done-title">Hoàn thành bộ câu!</div>
+    <div class="done-sub">Chọn bộ tiếp theo hoặc ôn lại để ghi nhớ sâu hơn.</div>
     <div class="done-stats">
       <div class="stat"><div class="stat-n">10</div><div class="stat-l">Câu hoàn thành</div></div>
       <div class="stat"><div class="stat-n" id="done-lv">HSK1</div><div class="stat-l">Cấp độ</div></div>
-      <div class="stat"><div class="stat-n" id="done-day">—</div><div class="stat-l">Ngày học</div></div>
+      <div class="stat"><div class="stat-n" id="done-day">1</div><div class="stat-l">Ngày học</div></div>
     </div>
     <div class="done-btns">
       <button class="btn" onclick="restart()">↺ Ôn lại</button>
-      <button class="btn btn-primary" onclick="loadSet()">✨ Bộ mới →</button>
+      <button class="btn btn-primary" onclick="nextSet()">Bộ tiếp →</button>
     </div>
   </div>
 </div>
 
 <script>
-const HSK_INFO = {
-  1: { name: 'HSK 1', desc: 'Sơ cấp (~150 từ)', color: '#4a9eff' },
-  2: { name: 'HSK 2', desc: 'Cơ bản (~300 từ)', color: '#2ecc71' },
-  3: { name: 'HSK 3', desc: 'Trung cấp (~600 từ)', color: '#f39c12' },
-  4: { name: 'HSK 4', desc: 'Trung cao (~1200 từ)', color: '#9b59b6' },
-  5: { name: 'HSK 5', desc: 'Cao cấp (~2500 từ)', color: '#e74c3c' },
-  6: { name: 'HSK 6', desc: 'Thành thạo (~5000 từ)', color: '#c9a84c' },
+const DATA = {
+  1: [
+    // Bộ 1
+    [
+      { topic:"Chào hỏi", vi:"Xin chào! Bạn tên là gì?", zh:"你好！你叫什么名字？", py:"Nǐ hǎo! Nǐ jiào shénme míngzi?", vocab:[{w:"你好",m:"xin chào"},{w:"叫",m:"tên là, gọi là"},{w:"名字",m:"tên"}], grammar:"什么 dùng để hỏi 'cái gì, gì'. 你叫什么名字 = tên bạn là gì." },
+      { topic:"Gia đình", vi:"Tôi có ba người trong gia đình.", zh:"我家有三口人。", py:"Wǒ jiā yǒu sān kǒu rén.", vocab:[{w:"家",m:"nhà, gia đình"},{w:"有",m:"có"},{w:"口",m:"miệng (đơn vị đếm thành viên gia đình)"}], grammar:"口 là lượng từ dùng riêng để đếm số người trong gia đình." },
+      { topic:"Số đếm", vi:"Tôi muốn mua năm quả táo.", zh:"我想买五个苹果。", py:"Wǒ xiǎng mǎi wǔ gè píngguǒ.", vocab:[{w:"想",m:"muốn"},{w:"买",m:"mua"},{w:"个",m:"cái (lượng từ phổ thông)"},{w:"苹果",m:"táo"}], grammar:"个 là lượng từ chung, dùng được với hầu hết danh từ." },
+      { topic:"Thời gian", vi:"Hôm nay là thứ Hai.", zh:"今天是星期一。", py:"Jīntiān shì xīngqī yī.", vocab:[{w:"今天",m:"hôm nay"},{w:"是",m:"là"},{w:"星期一",m:"thứ Hai"}], grammar:"是 là động từ 'là', dùng để nối chủ ngữ với danh từ vị ngữ." },
+      { topic:"Màu sắc", vi:"Cái áo này màu đỏ rất đẹp.", zh:"这件衣服红色很好看。", py:"Zhè jiàn yīfu hóngsè hěn hǎokàn.", vocab:[{w:"这",m:"này"},{w:"件",m:"cái (lượng từ cho quần áo)"},{w:"红色",m:"màu đỏ"},{w:"好看",m:"đẹp"}], grammar:"件 là lượng từ dùng cho áo, quần áo. 好看 = trông đẹp mắt." },
+      { topic:"Đồ uống", vi:"Tôi muốn uống một cốc nước.", zh:"我想喝一杯水。", py:"Wǒ xiǎng hē yī bēi shuǐ.", vocab:[{w:"喝",m:"uống"},{w:"杯",m:"cốc, ly (lượng từ)"},{w:"水",m:"nước"}], grammar:"杯 vừa là danh từ (cốc) vừa là lượng từ chỉ đơn vị nước." },
+      { topic:"Nơi chốn", vi:"Trường học ở đằng kia.", zh:"学校在那边。", py:"Xuéxiào zài nàbiān.", vocab:[{w:"学校",m:"trường học"},{w:"在",m:"ở, tại"},{w:"那边",m:"đằng kia, phía đó"}], grammar:"在 dùng để chỉ vị trí. Cấu trúc: chủ ngữ + 在 + địa điểm." },
+      { topic:"Thức ăn", vi:"Tôi thích ăn cơm Trung Quốc.", zh:"我喜欢吃中国菜。", py:"Wǒ xǐhuān chī Zhōngguó cài.", vocab:[{w:"喜欢",m:"thích"},{w:"吃",m:"ăn"},{w:"中国菜",m:"đồ ăn Trung Quốc"}], grammar:"喜欢 + động từ = thích làm gì. Cấu trúc cơ bản V+V liên động." },
+      { topic:"Thời tiết", vi:"Hôm nay trời rất nóng.", zh:"今天天气很热。", py:"Jīntiān tiānqì hěn rè.", vocab:[{w:"天气",m:"thời tiết"},{w:"很",m:"rất"},{w:"热",m:"nóng"}], grammar:"很 thường đứng trước tính từ, không cần động từ 'là'. 天气很热 = thời tiết rất nóng." },
+      { topic:"Số điện thoại", vi:"Số điện thoại của tôi là 0123456789.", zh:"我的电话号码是零一二三四五六七八九。", py:"Wǒ de diànhuà hàomǎ shì líng yī èr sān sì wǔ liù qī bā jiǔ.", vocab:[{w:"电话",m:"điện thoại"},{w:"号码",m:"số, mã số"},{w:"的",m:"của (trợ từ sở hữu)"}], grammar:"的 là trợ từ sở hữu, giống 'của' trong tiếng Việt. 我的 = của tôi." }
+    ],
+    // Bộ 2
+    [
+      { topic:"Tuổi tác", vi:"Tôi năm nay hai mươi tuổi.", zh:"我今年二十岁。", py:"Wǒ jīnnián èrshí suì.", vocab:[{w:"今年",m:"năm nay"},{w:"岁",m:"tuổi"}], grammar:"岁 là từ chỉ tuổi, không cần lượng từ 个. Hỏi tuổi: 你几岁？ / 你多大？" },
+      { topic:"Quốc gia", vi:"Tôi là người Việt Nam.", zh:"我是越南人。", py:"Wǒ shì Yuènán rén.", vocab:[{w:"越南",m:"Việt Nam"},{w:"人",m:"người"}], grammar:"Quốc gia + 人 = người của quốc gia đó. Trung Quốc → 中国人." },
+      { topic:"Đồ vật", vi:"Đây là điện thoại của tôi.", zh:"这是我的手机。", py:"Zhè shì wǒ de shǒujī.", vocab:[{w:"这",m:"đây, cái này"},{w:"手机",m:"điện thoại di động"}], grammar:"这是... = đây là... Dùng để giới thiệu hoặc chỉ định sự vật gần người nói." },
+      { topic:"Học tập", vi:"Tôi đang học tiếng Trung.", zh:"我在学汉语。", py:"Wǒ zài xué Hànyǔ.", vocab:[{w:"在",m:"đang (diễn tả hành động đang xảy ra)"},{w:"汉语",m:"tiếng Trung (Hán ngữ)"}], grammar:"在 + động từ diễn tả hành động đang diễn ra, tương đương 'đang' trong tiếng Việt." },
+      { topic:"Gia đình", vi:"Bố tôi là giáo viên.", zh:"我爸爸是老师。", py:"Wǒ bàba shì lǎoshī.", vocab:[{w:"爸爸",m:"bố, cha"},{w:"老师",m:"giáo viên, thầy cô"}], grammar:"是 dùng để nối chủ ngữ với danh từ nghề nghiệp. Cấu trúc: N + 是 + N." },
+      { topic:"Mua sắm", vi:"Cái này bao nhiêu tiền?", zh:"这个多少钱？", py:"Zhège duōshao qián?", vocab:[{w:"多少",m:"bao nhiêu"},{w:"钱",m:"tiền"}], grammar:"多少钱 = bao nhiêu tiền. Không cần động từ 是 khi hỏi giá." },
+      { topic:"Màu sắc", vi:"Tôi thích màu xanh lam.", zh:"我喜欢蓝色。", py:"Wǒ xǐhuān lánsè.", vocab:[{w:"蓝色",m:"màu xanh lam"},{w:"绿色",m:"màu xanh lá"},{w:"黄色",m:"màu vàng"}], grammar:"Các màu sắc trong tiếng Trung thường thêm 色 phía sau: 红色, 蓝色, 绿色..." },
+      { topic:"Ngày tháng", vi:"Hôm nay là ngày mấy?", zh:"今天几号？", py:"Jīntiān jǐ hào?", vocab:[{w:"几",m:"mấy (hỏi số nhỏ)"},{w:"号",m:"ngày (trong tháng)"}], grammar:"几 hỏi số lượng nhỏ (dưới 10). 号 là ngày trong tháng. 几号 = ngày mấy." },
+      { topic:"Đồ ăn", vi:"Tôi không ăn thịt.", zh:"我不吃肉。", py:"Wǒ bù chī ròu.", vocab:[{w:"不",m:"không (phủ định)"},{w:"肉",m:"thịt"}], grammar:"不 là từ phủ định đứng trước động từ hoặc tính từ. 不吃 = không ăn." },
+      { topic:"Phương tiện", vi:"Tôi đi làm bằng xe buýt.", zh:"我坐公共汽车去上班。", py:"Wǒ zuò gōnggòng qìchē qù shàngbān.", vocab:[{w:"坐",m:"ngồi, đi (xe)"},{w:"公共汽车",m:"xe buýt"},{w:"上班",m:"đi làm"}], grammar:"坐 + phương tiện = đi bằng phương tiện đó. 去 + động từ = đi để làm gì." }
+    ],
+    // Bộ 3
+    [
+      { topic:"Chào tạm biệt", vi:"Tạm biệt! Hẹn gặp lại ngày mai.", zh:"再见！明天见。", py:"Zàijiàn! Míngtiān jiàn.", vocab:[{w:"再见",m:"tạm biệt"},{w:"明天",m:"ngày mai"},{w:"见",m:"gặp"}], grammar:"Thời gian + 见 = hẹn gặp vào thời điểm đó. 明天见 = hẹn gặp ngày mai." },
+      { topic:"Cảm ơn", vi:"Cảm ơn bạn rất nhiều!", zh:"非常感谢你！", py:"Fēicháng gǎnxiè nǐ!", vocab:[{w:"非常",m:"rất, hết sức"},{w:"感谢",m:"cảm ơn, cảm tạ"}], grammar:"非常 nhấn mạnh mức độ hơn 很. 非常感谢 trang trọng hơn 谢谢." },
+      { topic:"Xin lỗi", vi:"Xin lỗi, bạn có thể nói chậm hơn không?", zh:"对不起，你能说慢一点吗？", py:"Duìbuqǐ, nǐ néng shuō màn yīdiǎn ma?", vocab:[{w:"对不起",m:"xin lỗi"},{w:"能",m:"có thể"},{w:"慢",m:"chậm"},{w:"一点",m:"một chút"}], grammar:"能 + động từ = có thể làm gì. 吗 biến câu thành câu hỏi." },
+      { topic:"Thời tiết", vi:"Ngày mai trời sẽ mưa.", zh:"明天会下雨。", py:"Míngtiān huì xià yǔ.", vocab:[{w:"会",m:"sẽ, có thể"},{w:"下雨",m:"mưa (rơi mưa)"}], grammar:"会 chỉ khả năng hoặc dự đoán tương lai. 下雨 = mưa (xuống + mưa)." },
+      { topic:"Sở thích", vi:"Tôi thích xem phim.", zh:"我喜欢看电影。", py:"Wǒ xǐhuān kàn diànyǐng.", vocab:[{w:"看",m:"xem, nhìn"},{w:"电影",m:"phim"}], grammar:"喜欢 + V = thích làm gì. 看电影 = xem phim, 看书 = đọc sách." },
+      { topic:"Sức khỏe", vi:"Tôi bị đau đầu.", zh:"我头疼。", py:"Wǒ tóuténg.", vocab:[{w:"头",m:"đầu"},{w:"疼",m:"đau"}], grammar:"Bộ phận cơ thể + 疼/痛 = bộ phận đó bị đau. Ví dụ: 肚子疼 = đau bụng." },
+      { topic:"Học tập", vi:"Quyển sách này rất thú vị.", zh:"这本书很有意思。", py:"Zhè běn shū hěn yǒu yìsi.", vocab:[{w:"本",m:"quyển (lượng từ cho sách)"},{w:"书",m:"sách"},{w:"有意思",m:"thú vị, hay"}], grammar:"本 là lượng từ riêng cho sách. 有意思 = có ý nghĩa = thú vị." },
+      { topic:"Gia đình", vi:"Chị gái tôi năm nay hai mươi lăm tuổi.", zh:"我姐姐今年二十五岁。", py:"Wǒ jiějiě jīnnián èrshíwǔ suì.", vocab:[{w:"姐姐",m:"chị gái"},{w:"二十五",m:"hai mươi lăm"}], grammar:"Số từ ghép: 二十五 = 20+5. Tiếng Trung đọc từng đơn vị: 二十 + 五." },
+      { topic:"Thức ăn", vi:"Tôi muốn ăn mì.", zh:"我想吃面条。", py:"Wǒ xiǎng chī miàntiáo.", vocab:[{w:"面条",m:"mì (sợi mì)"},{w:"饺子",m:"há cảo"},{w:"米饭",m:"cơm"}], grammar:"想 + V = muốn làm gì. Nhẹ hơn 要 (要 mang tính quyết định hơn)." },
+      { topic:"Nơi chốn", vi:"Nhà vệ sinh ở đâu?", zh:"洗手间在哪里？", py:"Xǐshǒujiān zài nǎlǐ?", vocab:[{w:"洗手间",m:"nhà vệ sinh, toilet"},{w:"哪里",m:"ở đâu, chỗ nào"}], grammar:"哪里 / 哪儿 = ở đâu. Cấu trúc hỏi vị trí: N + 在哪里？" }
+    ]
+  ],
+
+  2: [
+    // Bộ 1
+    [
+      { topic:"So sánh", vi:"Hà Nội nóng hơn Hà Nội mùa đông.", zh:"河内比河内冬天热。", py:"Hénèi bǐ Hénèi dōngtiān rè.", vocab:[{w:"比",m:"hơn (so sánh)"},{w:"冬天",m:"mùa đông"}], grammar:"A + 比 + B + tính từ = A ... hơn B. Không dùng 更 hoặc 非常 ngay sau 比." },
+      { topic:"Thể thao", vi:"Anh ấy thường xuyên đi bơi vào cuối tuần.", zh:"他常常周末去游泳。", py:"Tā chángcháng zhōumò qù yóuyǒng.", vocab:[{w:"常常",m:"thường xuyên"},{w:"周末",m:"cuối tuần"},{w:"游泳",m:"bơi lội"}], grammar:"常常 / 经常 = thường xuyên. Trạng từ tần suất đứng trước động từ." },
+      { topic:"Mua sắm", vi:"Cái này quá đắt, tôi không mua.", zh:"这个太贵了，我不买。", py:"Zhège tài guì le, wǒ bù mǎi.", vocab:[{w:"太...了",m:"quá..."},{w:"贵",m:"đắt"}], grammar:"太 + tính từ + 了 = quá... Mang hàm ý vượt mức chấp nhận được." },
+      { topic:"Học tập", vi:"Bài tập này khó quá, tôi không hiểu.", zh:"这个作业太难了，我不明白。", py:"Zhège zuòyè tài nán le, wǒ bù míngbái.", vocab:[{w:"作业",m:"bài tập"},{w:"难",m:"khó"},{w:"明白",m:"hiểu, rõ ràng"}], grammar:"明白 nghĩa là 'hiểu rõ, sáng tỏ'. Khác với 懂 (hiểu theo nghĩa năng lực)." },
+      { topic:"Thời gian", vi:"Tôi thức dậy lúc sáu giờ rưỡi.", zh:"我六点半起床。", py:"Wǒ liù diǎn bàn qǐchuáng.", vocab:[{w:"点",m:"giờ (đơn vị giờ)"},{w:"半",m:"rưỡi, nửa"},{w:"起床",m:"thức dậy, dậy giường"}], grammar:"Giờ + 点 + 半 = giờ rưỡi. 起床 là từ ghép: 起 (dậy) + 床 (giường)." },
+      { topic:"Phương hướng", vi:"Rẽ phải, đi thẳng là đến nơi rồi.", zh:"向右转，一直走就到了。", py:"Xiàng yòu zhuǎn, yīzhí zǒu jiù dào le.", vocab:[{w:"向右转",m:"rẽ phải"},{w:"一直",m:"thẳng, mãi"},{w:"就",m:"thì, liền"}], grammar:"就 biểu thị kết quả tức thì hoặc sự liên kết nhanh giữa điều kiện và kết quả." },
+      { topic:"Thời tiết", vi:"Mùa xuân ở đây rất đẹp.", zh:"这里的春天很美。", py:"Zhèlǐ de chūntiān hěn měi.", vocab:[{w:"这里",m:"đây, nơi này"},{w:"春天",m:"mùa xuân"},{w:"美",m:"đẹp"}], grammar:"地点 + 的 + danh từ = sự vật thuộc về địa điểm đó. 这里的春天 = mùa xuân ở đây." },
+      { topic:"Sức khỏe", vi:"Dạo này tôi ngủ không ngon.", zh:"最近我睡得不好。", py:"Zuìjìn wǒ shuì de bù hǎo.", vocab:[{w:"最近",m:"gần đây, dạo này"},{w:"睡",m:"ngủ"},{w:"得",m:"(trợ từ bổ ngữ)"}], grammar:"V + 得 + bổ ngữ mức độ. 睡得好 = ngủ ngon, 睡得不好 = ngủ không ngon." },
+      { topic:"Cảm xúc", vi:"Tôi rất vui khi gặp bạn.", zh:"见到你我很高兴。", py:"Jiàn dào nǐ wǒ hěn gāoxìng.", vocab:[{w:"见到",m:"gặp được"},{w:"高兴",m:"vui, phấn khởi"}], grammar:"Mệnh đề phụ + 主句. Khi điều kiện đứng trước thì không cần liên từ." },
+      { topic:"Giao tiếp", vi:"Bạn biết nói tiếng Anh không?", zh:"你会说英语吗？", py:"Nǐ huì shuō Yīngyǔ ma?", vocab:[{w:"会",m:"biết (kỹ năng được học)"},{w:"英语",m:"tiếng Anh"}], grammar:"会 chỉ khả năng học được (kỹ năng). Khác 能 (có điều kiện/năng lực thực tế)." }
+    ],
+    // Bộ 2
+    [
+      { topic:"Nhờ vả", vi:"Bạn có thể giúp tôi không?", zh:"你能帮我一下吗？", py:"Nǐ néng bāng wǒ yīxià ma?", vocab:[{w:"能",m:"có thể"},{w:"帮",m:"giúp"},{w:"一下",m:"một chút, thử làm"}], grammar:"一下 làm mềm yêu cầu, mang nghĩa 'làm một chút'. 帮一下 = giúp một tay." },
+      { topic:"Thức ăn", vi:"Món này cay quá, tôi không ăn được.", zh:"这道菜太辣了，我吃不了。", py:"Zhè dào cài tài là le, wǒ chī bù liǎo.", vocab:[{w:"道",m:"món (lượng từ cho món ăn)"},{w:"辣",m:"cay"},{w:"吃不了",m:"không ăn được (quá sức)"}], grammar:"V + 不了 = không thể làm được (vượt quá khả năng). Khác 不能 (không được phép)." },
+      { topic:"Mua sắm", vi:"Tôi muốn thử cái áo này.", zh:"我想试试这件衣服。", py:"Wǒ xiǎng shìshi zhè jiàn yīfu.", vocab:[{w:"试试",m:"thử thử (hành động nhẹ nhàng)"},{w:"件",m:"cái (lượng từ áo)"}], grammar:"Lặp động từ đơn âm (AA) = thử làm nhẹ nhàng. 试试 = thử xem, 看看 = xem xem." },
+      { topic:"Đường phố", vi:"Từ đây đến ga xe lửa đi bao lâu?", zh:"从这里到火车站要多长时间？", py:"Cóng zhèlǐ dào huǒchēzhàn yào duō cháng shíjiān?", vocab:[{w:"火车站",m:"ga xe lửa"},{w:"多长时间",m:"bao lâu"}], grammar:"从...到... = từ...đến... Hỏi thời gian: 要多长时间 / 要多久." },
+      { topic:"Gia đình", vi:"Em gái tôi đang học lớp ba.", zh:"我妹妹在上三年级。", py:"Wǒ mèimei zài shàng sān niánjí.", vocab:[{w:"妹妹",m:"em gái"},{w:"年级",m:"lớp học (theo năm)"}], grammar:"在 + V = đang làm gì. 上学 = đi học, 上三年级 = học lớp 3." },
+      { topic:"Thời gian", vi:"Tôi đã ở Hà Nội được ba năm rồi.", zh:"我在河内住了三年了。", py:"Wǒ zài Hénèi zhù le sān nián le.", vocab:[{w:"住",m:"ở, cư trú"},{w:"了",m:"(hoàn thành/thay đổi trạng thái)"}], grammar:"V + 了 + thời gian + 了 = đã làm được... thời gian rồi (vẫn tiếp tục)." },
+      { topic:"Sở thích", vi:"Anh ấy rất giỏi đánh bóng bàn.", zh:"他乒乓球打得很好。", py:"Tā pīngpāngqiú dǎ de hěn hǎo.", vocab:[{w:"乒乓球",m:"bóng bàn"},{w:"打",m:"đánh, chơi (thể thao)"},{w:"得",m:"(trợ từ bổ ngữ)"}], grammar:"Tân ngữ + V + 得 + bổ ngữ. 乒乓球打得好 = chơi bóng bàn giỏi." },
+      { topic:"Thời tiết", vi:"Mùa hè năm nay nóng hơn năm ngoái.", zh:"今年夏天比去年热。", py:"Jīnnián xiàtiān bǐ qùnián rè.", vocab:[{w:"夏天",m:"mùa hè"},{w:"去年",m:"năm ngoái"}], grammar:"A 比 B + tính từ = A...hơn B. Tính từ không thêm 很 sau 比." },
+      { topic:"Giao tiếp", vi:"Tôi nghe không hiểu, bạn có thể viết ra không?", zh:"我听不懂，你能写下来吗？", py:"Wǒ tīng bù dǒng, nǐ néng xiě xiàlái ma?", vocab:[{w:"听不懂",m:"nghe không hiểu"},{w:"写",m:"viết"},{w:"下来",m:"xuống, ghi lại"}], grammar:"V + 不懂 = làm nhưng không hiểu. 写下来 = viết xuống = ghi lại." },
+      { topic:"Học tập", vi:"Hôm nay thầy giáo dạy hai bài mới.", zh:"今天老师教了两课新内容。", py:"Jīntiān lǎoshī jiāo le liǎng kè xīn nèiróng.", vocab:[{w:"教",m:"dạy"},{w:"两",m:"hai (dùng trước lượng từ)"},{w:"课",m:"bài học"}], grammar:"两 dùng trước lượng từ (hai người, hai cái...). 二 dùng khi đếm hoặc trong số lớn." }
+    ],
+    // Bộ 3
+    [
+      { topic:"Công việc", vi:"Bố tôi làm việc ở một công ty lớn.", zh:"我爸爸在一家大公司工作。", py:"Wǒ bàba zài yī jiā dà gōngsī gōngzuò.", vocab:[{w:"家",m:"nhà, cơ sở (lượng từ cho công ty)"},{w:"大",m:"lớn"},{w:"公司",m:"công ty"}], grammar:"家 là lượng từ cho tổ chức, cơ sở. 一家公司 = một công ty." },
+      { topic:"Đi lại", vi:"Tôi thường đi bộ đến cửa hàng.", zh:"我通常走路去商店。", py:"Wǒ tōngcháng zǒulù qù shāngdiàn.", vocab:[{w:"通常",m:"thường thường"},{w:"走路",m:"đi bộ"},{w:"商店",m:"cửa hàng"}], grammar:"走路 = đi bộ (đi + đường). Phân biệt 走 (đi) và 走路 (đi bộ cụ thể)." },
+      { topic:"Cảm xúc", vi:"Tôi buồn khi xa gia đình.", zh:"离开家人的时候，我很难过。", py:"Líkāi jiārén de shíhou, wǒ hěn nánguò.", vocab:[{w:"离开",m:"rời đi, xa"},{w:"家人",m:"người thân, gia đình"},{w:"难过",m:"buồn, đau lòng"}], grammar:"...的时候 = khi..., lúc... Mệnh đề thời gian đứng trước mệnh đề chính." },
+      { topic:"Thời gian", vi:"Mỗi buổi tối tôi học tiếng Trung một tiếng.", zh:"我每天晚上学一个小时汉语。", py:"Wǒ měitiān wǎnshang xué yī gè xiǎoshí Hànyǔ.", vocab:[{w:"每天",m:"mỗi ngày"},{w:"晚上",m:"buổi tối"},{w:"小时",m:"tiếng (giờ đồng hồ)"}], grammar:"小时 = tiếng đồng hồ (đơn vị thời gian). 一个小时 = một tiếng đồng hồ." },
+      { topic:"Du lịch", vi:"Năm ngoái tôi đã đến Bắc Kinh.", zh:"去年我去了北京。", py:"Qùnián wǒ qù le Běijīng.", vocab:[{w:"去年",m:"năm ngoái"},{w:"北京",m:"Bắc Kinh"},{w:"了",m:"(hoàn thành)"}], grammar:"V + 了 = hành động đã hoàn thành. Đặt ngay sau động từ chính." },
+      { topic:"Sức khỏe", vi:"Bạn nên uống nhiều nước hơn.", zh:"你应该多喝水。", py:"Nǐ yīnggāi duō hē shuǐ.", vocab:[{w:"应该",m:"nên, phải"},{w:"多",m:"nhiều (trước động từ: làm nhiều hơn)"}], grammar:"多 + V = làm nhiều hơn. 多喝水 = uống nhiều nước hơn. Khác 多 + N = nhiều..." },
+      { topic:"Nhà ở", vi:"Căn phòng của tôi không lớn lắm.", zh:"我的房间不太大。", py:"Wǒ de fángjiān bù tài dà.", vocab:[{w:"房间",m:"phòng"},{w:"不太",m:"không lắm, không quá"}], grammar:"不太 + tính từ = không lắm, không quá. Nhẹ hơn 不 và mang tính lịch sự." },
+      { topic:"Giao tiếp", vi:"Xin lỗi, chỗ này có người ngồi chưa?", zh:"不好意思，这个位子有人坐吗？", py:"Bù hǎoyìsi, zhège wèizi yǒu rén zuò ma?", vocab:[{w:"不好意思",m:"xin lỗi, ngại ngùng"},{w:"位子",m:"chỗ ngồi, ghế"}], grammar:"有人 + V = có người... không? Cách hỏi lịch sự khi muốn dùng chỗ của người khác." },
+      { topic:"Mua sắm", vi:"Tôi muốn đổi lại cái này.", zh:"我想换一个。", py:"Wǒ xiǎng huàn yī gè.", vocab:[{w:"换",m:"đổi, thay"}], grammar:"换 = đổi/thay. 换一个 = đổi lấy cái khác. Hay dùng trong bối cảnh mua sắm." },
+      { topic:"Thức ăn", vi:"Nhà hàng này đồ ăn rất ngon và giá hợp lý.", zh:"这家餐厅菜很好吃，价格也合理。", py:"Zhè jiā cāntīng cài hěn hǎochī, jiàgé yě hélǐ.", vocab:[{w:"餐厅",m:"nhà hàng"},{w:"价格",m:"giá cả"},{w:"合理",m:"hợp lý"}], grammar:"也 = cũng. Dùng để thêm ý bổ sung. 菜好吃，价格也合理 = ăn ngon, giá cũng hợp lý." }
+    ]
+  ],
+
+  3: [
+    [
+      { topic:"Thời gian", vi:"Hôm nay tôi rất bận, không có thời gian đi mua sắm.", zh:"我今天很忙，没有时间去购物。", py:"Wǒ jīntiān hěn máng, méiyǒu shíjiān qù gòuwù.", vocab:[{w:"忙",m:"bận"},{w:"没有",m:"không có"},{w:"购物",m:"mua sắm"}], grammar:"没有 phủ định sự tồn tại hoặc sở hữu. 没有时间 = không có thời gian." },
+      { topic:"Sức khỏe", vi:"Gần đây anh ấy cảm thấy không khỏe, cần nghỉ ngơi.", zh:"最近他感觉不舒服，需要休息。", py:"Zuìjìn tā gǎnjué bù shūfu, xūyào xiūxi.", vocab:[{w:"感觉",m:"cảm thấy"},{w:"舒服",m:"thoải mái, khỏe"},{w:"需要",m:"cần"}], grammar:"感觉 + trạng thái = cảm thấy thế nào. 需要 = cần (mang tính thiết yếu hơn 想)." },
+      { topic:"Học tập", vi:"Cô ấy mỗi ngày đều ôn lại những từ mới đã học.", zh:"她每天都复习已经学过的生词。", py:"Tā měitiān dōu fùxí yǐjīng xuéguò de shēngcí.", vocab:[{w:"复习",m:"ôn tập"},{w:"已经",m:"đã"},{w:"生词",m:"từ mới"}], grammar:"每天都 = mỗi ngày đều. 都 nhấn mạnh tính toàn bộ, không ngoại lệ." },
+      { topic:"Di chuyển", vi:"Từ nhà tôi đến trường mất khoảng ba mươi phút.", zh:"从我家到学校大概需要三十分钟。", py:"Cóng wǒ jiā dào xuéxiào dàgài xūyào sānshí fēnzhōng.", vocab:[{w:"大概",m:"khoảng, xấp xỉ"},{w:"分钟",m:"phút"}], grammar:"从...到... = từ...đến... Diễn đạt khoảng cách hoặc thời gian từ điểm A đến B." },
+      { topic:"Gia đình", vi:"Cuối tuần này gia đình tôi sẽ cùng nhau đi ăn cơm.", zh:"这个周末我们全家一起去吃饭。", py:"Zhège zhōumò wǒmen quánjiā yīqǐ qù chīfàn.", vocab:[{w:"全家",m:"cả nhà"},{w:"一起",m:"cùng nhau"}], grammar:"一起 = cùng nhau. Đứng trước động từ. 去 + V = đi để làm gì (liên động)." },
+      { topic:"Cảm xúc", vi:"Khi nghe tin đó, anh ấy vừa vui vừa xúc động.", zh:"听到那个消息，他又高兴又感动。", py:"Tīng dào nàge xiāoxi, tā yòu gāoxìng yòu gǎndòng.", vocab:[{w:"消息",m:"tin tức"},{w:"感动",m:"xúc động"}], grammar:"又...又... = vừa...vừa... Diễn tả hai trạng thái/hành động đồng thời." },
+      { topic:"Thời tiết", vi:"Hà Nội mùa hè rất nóng, tôi không quen.", zh:"河内夏天很热，我不习惯。", py:"Hénèi xiàtiān hěn rè, wǒ bù xíguàn.", vocab:[{w:"习惯",m:"quen, thói quen"}], grammar:"习惯 vừa là danh từ (thói quen) vừa là động từ (quen với). 不习惯 = không quen." },
+      { topic:"Mua sắm", vi:"Cái áo này màu đẹp nhưng hơi đắt, có thể giảm không?", zh:"这件衣服颜色很好看，但是有点贵，能便宜一点吗？", py:"Zhè jiàn yīfu yánsè hěn hǎokàn, dànshì yǒudiǎn guì, néng piányí yīdiǎn ma?", vocab:[{w:"颜色",m:"màu sắc"},{w:"有点",m:"hơi, một chút (tiêu cực nhẹ)"},{w:"便宜",m:"rẻ"}], grammar:"有点 + tính từ tiêu cực = hơi... (phàn nàn nhẹ). Khác 一点 (thêm vào sau tính từ)." },
+      { topic:"Công việc", vi:"Anh ấy đã làm việc ở công ty này được năm năm rồi.", zh:"他已经在这家公司工作了五年了。", py:"Tā yǐjīng zài zhè jiā gōngsī gōngzuò le wǔ nián le.", vocab:[{w:"已经",m:"đã"},{w:"工作",m:"làm việc, công việc"}], grammar:"已经...了 = đã... rồi. Hai 了: một sau V (hoàn thành), một cuối câu (xác nhận)." },
+      { topic:"Giao tiếp", vi:"Nếu bạn không hiểu, hãy hỏi thầy giáo một lần nữa.", zh:"如果你不明白，就再问一次老师。", py:"Rúguǒ nǐ bù míngbái, jiù zài wèn yī cì lǎoshī.", vocab:[{w:"如果...就",m:"nếu...thì"},{w:"再",m:"lại, thêm một lần"},{w:"次",m:"lần (lượng từ)"}], grammar:"如果...就... = nếu...thì... 再 + V = làm lại. 一次 = một lần." }
+    ],
+    [
+      { topic:"Kế hoạch", vi:"Tháng tới tôi dự định đi du lịch Thượng Hải.", zh:"下个月我打算去上海旅游。", py:"Xià gè yuè wǒ dǎsuàn qù Shànghǎi lǚyóu.", vocab:[{w:"打算",m:"dự định, tính"},{w:"旅游",m:"du lịch"}], grammar:"打算 + V = dự định làm gì. Diễn đạt kế hoạch chưa chắc chắn, nhẹ hơn 计划." },
+      { topic:"Kinh nghiệm", vi:"Tôi chưa bao giờ đến Trung Quốc.", zh:"我从来没有去过中国。", py:"Wǒ cónglái méiyǒu qùguò Zhōngguó.", vocab:[{w:"从来",m:"từ trước đến nay"},{w:"没有...过",m:"chưa bao giờ..."}], grammar:"从来没有...过 = chưa bao giờ... (phủ định kinh nghiệm tuyệt đối)." },
+      { topic:"Lý do", vi:"Vì trời mưa nên tôi không ra ngoài.", zh:"因为下雨，所以我没有出去。", py:"Yīnwèi xià yǔ, suǒyǐ wǒ méiyǒu chūqù.", vocab:[{w:"因为...所以",m:"vì...nên"},{w:"出去",m:"ra ngoài"}], grammar:"因为...所以... = vì...nên... Liên từ nhân quả. Có thể bỏ một vế nhưng không bỏ cả hai." },
+      { topic:"Thay đổi", vi:"Sau khi học một năm, tiếng Trung của tôi tiến bộ nhiều.", zh:"学了一年以后，我的汉语进步了很多。", py:"Xué le yī nián yǐhòu, wǒ de Hànyǔ jìnbù le hěn duō.", vocab:[{w:"以后",m:"sau khi, sau đó"},{w:"进步",m:"tiến bộ"}], grammar:"...了...以后 = sau khi đã... V+了+thời gian+以后 = sau khi làm được bao lâu." },
+      { topic:"Sở thích", vi:"Anh ấy vừa thích đọc sách vừa thích nghe nhạc.", zh:"他既喜欢看书，又喜欢听音乐。", py:"Tā jì xǐhuān kàn shū, yòu xǐhuān tīng yīnyuè.", vocab:[{w:"既...又",m:"vừa...vừa (trang trọng)"},{w:"音乐",m:"âm nhạc"}], grammar:"既...又... = vừa...vừa... (trang trọng hơn 又...又...). Dùng cho hai điều tích cực." },
+      { topic:"Mô tả", vi:"Thầy giáo của chúng tôi rất nhiệt tình và dễ gần.", zh:"我们的老师非常热情，也很容易相处。", py:"Wǒmen de lǎoshī fēicháng rèqíng, yě hěn róngyì xiāngchǔ.", vocab:[{w:"热情",m:"nhiệt tình, nồng hậu"},{w:"容易",m:"dễ"},{w:"相处",m:"hòa đồng, sống cùng"}], grammar:"非常 nhấn mạnh hơn 很. 容易 + V = dễ làm gì đó. 相处 = sống/làm việc cùng." },
+      { topic:"Yêu cầu", vi:"Trong thư viện, mọi người phải giữ yên lặng.", zh:"在图书馆里，大家要保持安静。", py:"Zài túshūguǎn lǐ, dàjiā yào bǎochí ānjìng.", vocab:[{w:"图书馆",m:"thư viện"},{w:"保持",m:"giữ, duy trì"},{w:"安静",m:"yên lặng, im lặng"}], grammar:"要 = phải (bắt buộc). 保持 + trạng thái = duy trì trạng thái đó." },
+      { topic:"Công việc", vi:"Anh ấy vừa mới xin được việc làm mới.", zh:"他刚刚找到了一份新工作。", py:"Tā gānggāng zhǎodào le yī fèn xīn gōngzuò.", vocab:[{w:"刚刚",m:"vừa mới"},{w:"找到",m:"tìm được"},{w:"份",m:"(lượng từ cho việc làm, tài liệu)"}], grammar:"刚刚 = vừa mới (hành động vừa xảy ra). 找到 = tìm được (kết quả thành công)." },
+      { topic:"Tình huống", vi:"Dù trời mưa nhưng anh ấy vẫn đến đúng giờ.", zh:"虽然下雨，但是他还是准时到了。", py:"Suīrán xià yǔ, dànshì tā háishì zhǔnshí dào le.", vocab:[{w:"虽然...但是",m:"tuy...nhưng"},{w:"还是",m:"vẫn (bất chấp)"},{w:"准时",m:"đúng giờ"}], grammar:"虽然...但是... = tuy...nhưng... 还是 = vẫn (nhấn mạnh kết quả không thay đổi)." },
+      { topic:"Giao tiếp", vi:"Tôi không đồng ý với ý kiến đó.", zh:"我不同意那个意见。", py:"Wǒ bù tóngyì nàge yìjiàn.", vocab:[{w:"同意",m:"đồng ý"},{w:"意见",m:"ý kiến, quan điểm"}], grammar:"同意 = đồng ý. 不同意 = không đồng ý. 意见 = ý kiến (trung tính hoặc phàn nàn)." }
+    ],
+    [
+      { topic:"Mô tả", vi:"Căn nhà đó tuy cũ nhưng rất ấm cúng.", zh:"那栋房子虽然旧，但是很温馨。", py:"Nà dòng fángzi suīrán jiù, dànshì hěn wēnxīn.", vocab:[{w:"栋",m:"(lượng từ cho nhà, tòa nhà)"},{w:"旧",m:"cũ"},{w:"温馨",m:"ấm cúng, ấm áp"}], grammar:"栋 là lượng từ cho nhà, tòa nhà. 虽然...但是 = tuy...nhưng." },
+      { topic:"Thói quen", vi:"Mỗi sáng tôi đều uống một ly cà phê trước khi đi làm.", zh:"每天早上我都在上班前喝一杯咖啡。", py:"Měitiān zǎoshang wǒ dōu zài shàngbān qián hē yī bēi kāfēi.", vocab:[{w:"早上",m:"buổi sáng"},{w:"上班前",m:"trước khi đi làm"}], grammar:"在...前 = trước khi. 每天...都 = mỗi ngày đều (diễn tả thói quen đều đặn)." },
+      { topic:"Cảm nhận", vi:"Xem bộ phim đó xong, tôi cảm thấy rất cảm động.", zh:"看完那部电影，我感到非常感动。", py:"Kàn wán nà bù diànyǐng, wǒ gǎndào fēicháng gǎndòng.", vocab:[{w:"部",m:"(lượng từ cho phim, sách)"},{w:"感到",m:"cảm thấy"},{w:"感动",m:"xúc động"}], grammar:"V + 完 = làm xong. 看完 = xem xong. 感到 = cảm thấy (mang tính tình cảm sâu)." },
+      { topic:"Lời khuyên", vi:"Bạn nên nghỉ ngơi nhiều hơn, đừng làm việc quá sức.", zh:"你应该多休息，不要工作过度。", py:"Nǐ yīnggāi duō xiūxi, bùyào gōngzuò guòdù.", vocab:[{w:"应该",m:"nên"},{w:"不要",m:"đừng"},{w:"过度",m:"quá mức"}], grammar:"应该 = nên (lời khuyên). 不要 + V = đừng làm gì (cấm đoán nhẹ nhàng)." },
+      { topic:"Mua sắm", vi:"Hàng này chất lượng tốt hơn loại kia nhiều.", zh:"这种商品质量比那种好多了。", py:"Zhè zhǒng shāngpǐn zhìliàng bǐ nà zhǒng hǎo duō le.", vocab:[{w:"种",m:"loại (lượng từ)"},{w:"质量",m:"chất lượng"},{w:"好多了",m:"tốt hơn nhiều"}], grammar:"比...好多了 = tốt hơn...nhiều. 多了 sau tính từ nhấn mạnh sự chênh lệch lớn." },
+      { topic:"Thời gian", vi:"Tôi đã đợi anh ấy hơn một tiếng đồng hồ.", zh:"我等了他一个多小时。", py:"Wǒ děng le tā yī gè duō xiǎoshí.", vocab:[{w:"等",m:"đợi, chờ"},{w:"多",m:"hơn (đứng sau số đếm)"}], grammar:"数字 + 多 + lượng từ = hơn... Ví dụ: 一个多小时 = hơn một tiếng, 两年多 = hơn hai năm." },
+      { topic:"Du lịch", vi:"Chuyến đi lần này thật đáng nhớ.", zh:"这次旅行真的很难忘。", py:"Zhè cì lǚxíng zhēnde hěn nánwàng.", vocab:[{w:"旅行",m:"chuyến đi, du lịch"},{w:"真的",m:"thật sự, thực sự"},{w:"难忘",m:"khó quên, đáng nhớ"}], grammar:"难 + V = khó làm gì / đáng làm gì. 难忘 = khó quên = đáng nhớ." },
+      { topic:"Học tập", vi:"Để thi đỗ HSK, bạn phải luyện tập thường xuyên.", zh:"为了通过HSK，你必须经常练习。", py:"Wèile tōngguò HSK, nǐ bìxū jīngcháng liànxí.", vocab:[{w:"为了",m:"để, vì mục đích"},{w:"通过",m:"vượt qua, đỗ"},{w:"必须",m:"phải (bắt buộc)"}], grammar:"为了 + mục đích = để... 必须 mạnh hơn 应该, mang tính bắt buộc tuyệt đối." },
+      { topic:"Quan hệ", vi:"Họ quen nhau đã được mười năm rồi.", zh:"他们认识已经十年了。", py:"Tāmen rènshi yǐjīng shí nián le.", vocab:[{w:"认识",m:"quen biết, nhận ra"},{w:"已经...了",m:"đã...rồi"}], grammar:"认识 = quen biết (trạng thái). Khác 见面 (gặp mặt, hành động). 已经...了 = đã...rồi." },
+      { topic:"Sức khỏe", vi:"Bác sĩ bảo tôi không được ăn đồ cay.", zh:"医生让我不要吃辣的东西。", py:"Yīshēng ràng wǒ bùyào chī là de dōngxi.", vocab:[{w:"医生",m:"bác sĩ"},{w:"让",m:"để, bảo (ai làm gì)"},{w:"东西",m:"đồ vật, thứ"}], grammar:"让 + người + V = bảo/để ai làm gì. Cấu trúc kiêm ngữ (兼语句)." }
+    ]
+  ],
+
+  4: [
+    [
+      { topic:"Xã hội", vi:"Với sự phát triển của công nghệ, cuộc sống của chúng ta thay đổi rất nhiều.", zh:"随着科技的发展，我们的生活发生了很大的变化。", py:"Suízhe kējì de fāzhǎn, wǒmen de shēnghuó fāshēng le hěn dà de biànhuà.", vocab:[{w:"随着",m:"cùng với, theo"},{w:"科技",m:"khoa học công nghệ"},{w:"发生",m:"xảy ra, xảy ra"}], grammar:"随着...发展/变化 = cùng với sự phát triển của... Mẫu câu diễn đạt biến đổi song song." },
+      { topic:"Môi trường", vi:"Ô nhiễm không khí ngày càng nghiêm trọng, cần phải giải quyết ngay.", zh:"空气污染越来越严重，需要立刻解决。", py:"Kōngqì wūrǎn yuèlái yuè yánzhòng, xūyào lìkè jiějué.", vocab:[{w:"污染",m:"ô nhiễm"},{w:"越来越",m:"ngày càng"},{w:"严重",m:"nghiêm trọng"},{w:"立刻",m:"lập tức, ngay"}], grammar:"越来越 + tính từ = ngày càng... Diễn đạt sự thay đổi liên tục theo chiều hướng tăng." },
+      { topic:"Kinh tế", vi:"Mặc dù kinh tế khó khăn nhưng công ty vẫn giữ được lợi nhuận.", zh:"尽管经济困难，公司仍然保持了盈利。", py:"Jǐnguǎn jīngjì kùnnán, gōngsī réngrán bǎochí le yínglì.", vocab:[{w:"尽管",m:"mặc dù, tuy"},{w:"仍然",m:"vẫn, vẫn còn"},{w:"盈利",m:"có lãi, sinh lời"}], grammar:"尽管...仍然... = mặc dù...vẫn... Trang trọng hơn 虽然...但是... Dùng trong văn viết." },
+      { topic:"Giáo dục", vi:"Không phải học nhiều là giỏi, quan trọng là học đúng cách.", zh:"并不是学得多就好，重要的是学习方法。", py:"Bìng bù shì xué de duō jiù hǎo, zhòngyào de shì xuéxí fāngfǎ.", vocab:[{w:"并不是",m:"không phải là (nhấn mạnh phủ định)"},{w:"方法",m:"phương pháp, cách"}], grammar:"并不是...而是... = không phải...mà là... 并 nhấn mạnh sự phủ định, mạnh hơn 不是." },
+      { topic:"Văn hóa", vi:"Chỉ có hiểu văn hóa mới có thể thực sự hiểu ngôn ngữ.", zh:"只有了解文化，才能真正理解语言。", py:"Zhǐyǒu liǎojiě wénhuà, cái néng zhēnzhèng lǐjiě yǔyán.", vocab:[{w:"只有...才",m:"chỉ có...mới"},{w:"了解",m:"hiểu, tìm hiểu"},{w:"真正",m:"thực sự, thật sự"}], grammar:"只有...才... = chỉ có...mới... Điều kiện duy nhất để đạt kết quả." },
+      { topic:"Công việc", vi:"Dù thế nào đi nữa, anh ấy cũng sẽ hoàn thành nhiệm vụ đúng hạn.", zh:"不管怎样，他都会按时完成任务。", py:"Bùguǎn zěnyàng, tā dōu huì ànshí wánchéng rènwù.", vocab:[{w:"不管...都",m:"dù...thế nào cũng"},{w:"按时",m:"đúng hạn, đúng giờ"},{w:"任务",m:"nhiệm vụ"}], grammar:"不管...都/也 = dù...thế nào cũng. Điều kiện không thay đổi kết quả." },
+      { topic:"Quan hệ", vi:"Đối với tôi, bạn bè quan trọng hơn tiền bạc.", zh:"对我来说，朋友比金钱更重要。", py:"Duì wǒ lái shuō, péngyou bǐ jīnqián gèng zhòngyào.", vocab:[{w:"对...来说",m:"đối với..."},{w:"金钱",m:"tiền bạc"},{w:"更",m:"còn...hơn, càng"}], grammar:"对...来说 = đối với... Cách diễn đạt quan điểm cá nhân. 比...更 = so sánh nhấn mạnh." },
+      { topic:"Thói quen", vi:"Anh ấy đã quen với cuộc sống bận rộn đến mức không thể nghỉ ngơi.", zh:"他已经习惯了忙碌的生活，甚至无法休息。", py:"Tā yǐjīng xíguàn le mánglù de shēnghuó, shènzhì wúfǎ xiūxi.", vocab:[{w:"习惯了",m:"đã quen với"},{w:"甚至",m:"thậm chí"},{w:"无法",m:"không thể, không có cách"}], grammar:"甚至 = thậm chí (nhấn mạnh mức độ cực đoan). 无法 + V = không thể làm gì (không có phương pháp)." },
+      { topic:"Môi trường", vi:"Chúng ta cần hành động ngay để bảo vệ môi trường.", zh:"我们需要立即行动来保护环境。", py:"Wǒmen xūyào lìjí xíngdòng lái bǎohù huánjìng.", vocab:[{w:"立即",m:"lập tức"},{w:"行动",m:"hành động"},{w:"保护",m:"bảo vệ"},{w:"环境",m:"môi trường"}], grammar:"V + 来 + V = làm... để làm... 来 nối hai động từ, V1 là phương tiện để đạt V2." },
+      { topic:"Sức khỏe", vi:"Người ta nói rằng ngủ đủ giấc quan trọng hơn tập thể dục.", zh:"据说睡眠充足比锻炼更重要。", py:"Jùshuō shuìmián chōngzú bǐ duànliàn gèng zhòngyào.", vocab:[{w:"据说",m:"nghe nói, người ta nói"},{w:"睡眠充足",m:"ngủ đủ giấc"},{w:"锻炼",m:"tập thể dục"}], grammar:"据说 = nghe nói / theo truyền thuyết. Dùng đầu câu để trích dẫn nguồn không xác định." }
+    ],
+    [
+      { topic:"Triết lý", vi:"Thất bại là mẹ thành công, đừng sợ mắc lỗi.", zh:"失败是成功之母，不要害怕犯错误。", py:"Shībài shì chénggōng zhī mǔ, bùyào hàipà fàn cuòwù.", vocab:[{w:"失败",m:"thất bại"},{w:"之",m:"của (văn viết)"},{w:"害怕",m:"sợ hãi"},{w:"犯错误",m:"mắc lỗi"}], grammar:"之 là từ sở hữu trong văn viết, tương đương 的. 犯 + lỗi = phạm/mắc lỗi." },
+      { topic:"Xã hội", vi:"Ngày nay, mạng xã hội ảnh hưởng lớn đến cuộc sống của giới trẻ.", zh:"如今，社交媒体对年轻人的生活影响很大。", py:"Rújīn, shèjiāo méitǐ duì niánqīng rén de shēnghuó yǐngxiǎng hěn dà.", vocab:[{w:"如今",m:"ngày nay, hiện nay"},{w:"社交媒体",m:"mạng xã hội"},{w:"影响",m:"ảnh hưởng"}], grammar:"对...影响 = ảnh hưởng đến... 对 giới thiệu đối tượng chịu tác động." },
+      { topic:"Kinh tế", vi:"Xuất nhập khẩu đóng vai trò quan trọng trong nền kinh tế.", zh:"进出口贸易在经济中发挥着重要作用。", py:"Jìnchūkǒu màoyì zài jīngjì zhōng fāhuī zhe zhòngyào zuòyòng.", vocab:[{w:"进出口",m:"xuất nhập khẩu"},{w:"贸易",m:"thương mại"},{w:"发挥作用",m:"phát huy vai trò"}], grammar:"发挥 + 作用/优势 = phát huy tác dụng/ưu thế. 着 sau V diễn tả trạng thái đang duy trì." },
+      { topic:"Giáo dục", vi:"Càng học nhiều, tôi càng nhận ra mình còn thiếu sót.", zh:"我学得越多，越觉得自己不足。", py:"Wǒ xué de yuè duō, yuè juéde zìjǐ bùzú.", vocab:[{w:"越...越",m:"càng...càng"},{w:"觉得",m:"cảm thấy, cho rằng"},{w:"不足",m:"thiếu sót, chưa đủ"}], grammar:"越...越 = càng...càng. Diễn tả hai yếu tố tăng/giảm đồng thời." },
+      { topic:"Nghề nghiệp", vi:"Để thành công, ngoài tài năng còn cần sự chăm chỉ.", zh:"要想成功，除了才能之外，还需要勤奋。", py:"Yào xiǎng chénggōng, chúle cáinéng zhīwài, hái xūyào qínfèn.", vocab:[{w:"除了...之外",m:"ngoài...ra còn"},{w:"才能",m:"tài năng"},{w:"勤奋",m:"chăm chỉ, cần cù"}], grammar:"除了...之外，还... = ngoài...ra, còn... Bổ sung điều kiện hoặc ngoại lệ." },
+      { topic:"Văn hóa", vi:"Lễ hội mùa xuân là ngày tết quan trọng nhất của người Trung Quốc.", zh:"春节是中国人最重要的传统节日。", py:"Chūnjié shì Zhōngguó rén zuì zhòngyào de chuántǒng jiérì.", vocab:[{w:"春节",m:"Tết Nguyên Đán Trung Quốc"},{w:"传统",m:"truyền thống"},{w:"节日",m:"ngày lễ, ngày tết"}], grammar:"最 + tính từ = nhất. 最重要的 = quan trọng nhất. Đây là mẫu tính từ thượng cấp." },
+      { topic:"Du lịch", vi:"Chỗ này cảnh đẹp khiến du khách không muốn rời đi.", zh:"这里的景色美得让游客流连忘返。", py:"Zhèlǐ de jǐngsè měi de ràng yóukè liúlián wàng fǎn.", vocab:[{w:"景色",m:"phong cảnh, cảnh sắc"},{w:"游客",m:"du khách"},{w:"流连忘返",m:"lưu luyến không muốn về"}], grammar:"形容词 + 得 + 让 + N + V = ... đến mức khiến ai làm gì. Cấu trúc bổ ngữ kết quả." },
+      { topic:"Quan hệ", vi:"Dù có mâu thuẫn nhưng họ vẫn duy trì được tình bạn lâu dài.", zh:"尽管有矛盾，他们仍然维持了长久的友谊。", py:"Jǐnguǎn yǒu máodùn, tāmen réngrán wéichí le chángjiǔ de yǒuyì.", vocab:[{w:"矛盾",m:"mâu thuẫn"},{w:"维持",m:"duy trì"},{w:"友谊",m:"tình bạn"}], grammar:"尽管...仍然... = mặc dù...vẫn... Văn viết, mạnh hơn 虽然...但是..." },
+      { topic:"Môi trường", vi:"Nếu chúng ta không hành động ngay, thế hệ tương lai sẽ gánh chịu hậu quả.", zh:"如果我们不立即行动，子孙后代将承担严重后果。", py:"Rúguǒ wǒmen bù lìjí xíngdòng, zǐsūn hòudài jiāng chéngdān yánzhòng hòuguǒ.", vocab:[{w:"子孙后代",m:"con cháu, thế hệ sau"},{w:"承担",m:"gánh chịu, đảm nhận"},{w:"后果",m:"hậu quả"}], grammar:"将 = sẽ (tương lai, văn viết). Trang trọng hơn 会. 承担后果 = gánh chịu hậu quả." },
+      { topic:"Sức khỏe", vi:"Theo nghiên cứu, ăn uống lành mạnh giảm nguy cơ mắc bệnh mãn tính.", zh:"研究表明，健康饮食能降低患慢性病的风险。", py:"Yánjiū biǎomíng, jiànkāng yǐnshí néng jiàngdī huàn mànxìngbìng de fēngxiǎn.", vocab:[{w:"研究表明",m:"nghiên cứu cho thấy"},{w:"降低",m:"giảm"},{w:"慢性病",m:"bệnh mãn tính"},{w:"风险",m:"nguy cơ, rủi ro"}], grammar:"研究表明 = nghiên cứu chỉ ra. 降低风险 = giảm nguy cơ. 患 = mắc (bệnh)." }
+    ],
+    [
+      { topic:"Tâm lý", vi:"Áp lực công việc khiến anh ấy ngày càng mất ngủ.", zh:"工作压力使他越来越难以入睡。", py:"Gōngzuò yālì shǐ tā yuèlái yuè nányǐ rùshuì.", vocab:[{w:"压力",m:"áp lực"},{w:"使",m:"khiến, làm cho"},{w:"难以",m:"khó mà"},{w:"入睡",m:"đi vào giấc ngủ"}], grammar:"使 + N + V = khiến ai đó làm gì (văn viết). 难以 + V = khó mà làm gì." },
+      { topic:"Kinh tế", vi:"Đầu tư vào giáo dục là khoản đầu tư sinh lời nhất.", zh:"投资教育是回报最高的投资。", py:"Tóuzī jiàoyù shì huíbào zuì gāo de tóuzī.", vocab:[{w:"投资",m:"đầu tư"},{w:"回报",m:"lợi nhuận, phần thưởng trả lại"}], grammar:"是...的 nhấn mạnh đặc trưng. 回报最高的投资 = khoản đầu tư có lợi nhuận cao nhất." },
+      { topic:"Xã hội", vi:"Khoảng cách giàu nghèo là vấn đề xã hội cần được chú trọng.", zh:"贫富差距是需要重视的社会问题。", py:"Pínfù chājù shì xūyào zhòngshì de shèhuì wèntí.", vocab:[{w:"贫富差距",m:"khoảng cách giàu nghèo"},{w:"重视",m:"coi trọng, chú trọng"}], grammar:"需要 + V + 的 + N = N cần được V. Cấu trúc định ngữ phức tạp." },
+      { topic:"Sáng tạo", vi:"Chỉ có không ngừng đổi mới, doanh nghiệp mới tồn tại được lâu dài.", zh:"只有不断创新，企业才能长期生存。", py:"Zhǐyǒu bùduàn chuàngxīn, qǐyè cái néng chángqī shēngcún.", vocab:[{w:"不断",m:"không ngừng, liên tục"},{w:"创新",m:"đổi mới, sáng tạo"},{w:"企业",m:"doanh nghiệp"}], grammar:"只有...才... = chỉ có...mới... Nhấn mạnh điều kiện duy nhất." },
+      { topic:"Du lịch", vi:"Đi du lịch không chỉ giúp mở mang tầm nhìn mà còn làm phong phú trải nghiệm.", zh:"旅游不仅能开阔眼界，还能丰富人生经历。", py:"Lǚyóu bùjǐn néng kāikuò yǎnjiè, hái néng fēngfù rénshēng jīnglì.", vocab:[{w:"不仅...还",m:"không chỉ...mà còn"},{w:"开阔眼界",m:"mở mang tầm nhìn"},{w:"丰富",m:"làm phong phú, phong phú"}], grammar:"不仅...还/而且 = không chỉ...mà còn. Liệt kê hai lợi ích/đặc điểm trở lên." },
+      { topic:"Giao tiếp", vi:"Lắng nghe chủ động quan trọng hơn nói nhiều trong giao tiếp.", zh:"在交流中，主动倾听比多说话更重要。", py:"Zài jiāoliú zhōng, zhǔdòng qīngtīng bǐ duō shuōhuà gèng zhòngyào.", vocab:[{w:"交流",m:"giao tiếp, trao đổi"},{w:"主动",m:"chủ động"},{w:"倾听",m:"lắng nghe (chú tâm)"}], grammar:"在...中 = trong... (bối cảnh). 比...更 = so sánh nhấn mạnh." },
+      { topic:"Lịch sử", vi:"Mỗi quốc gia đều có lịch sử và văn hóa đặc sắc của riêng mình.", zh:"每个国家都有自己独特的历史和文化。", py:"Měi gè guójiā dōu yǒu zìjǐ dútè de lìshǐ hé wénhuà.", vocab:[{w:"独特",m:"độc đáo, đặc trưng"},{w:"历史",m:"lịch sử"}], grammar:"每...都 = mỗi...đều. 独特的 = độc đáo (tính từ + 的 trước danh từ)." },
+      { topic:"Tâm lý", vi:"Thái độ quyết định tất cả, tư duy tích cực tạo ra kết quả tốt.", zh:"态度决定一切，积极的心态创造好的结果。", py:"Tàidu juédìng yīqiè, jījí de xīntài chuàngzào hǎo de jiéguǒ.", vocab:[{w:"态度",m:"thái độ"},{w:"决定",m:"quyết định"},{w:"积极",m:"tích cực"},{w:"心态",m:"tâm thái, tâm lý"}], grammar:"决定 = quyết định (hành động). 心态 là trạng thái tâm lý tổng thể, rộng hơn 心情." },
+      { topic:"Công nghệ", vi:"Trí tuệ nhân tạo đang thay đổi cách chúng ta làm việc.", zh:"人工智能正在改变我们的工作方式。", py:"Réngōng zhìnéng zhèngzài gǎibiàn wǒmen de gōngzuò fāngshì.", vocab:[{w:"人工智能",m:"trí tuệ nhân tạo (AI)"},{w:"正在",m:"đang (nhấn mạnh)"},{w:"改变",m:"thay đổi"}], grammar:"正在 + V = đang (nhấn mạnh hành động đang diễn ra). Mạnh hơn 在." },
+      { topic:"Triết lý", vi:"Không có con đường tắt nào đến thành công lâu dài.", zh:"通往长久成功的路上没有捷径。", py:"Tōng wǎng chángjiǔ chénggōng de lù shàng méiyǒu jiéjìng.", vocab:[{w:"通往",m:"dẫn tới, đến"},{w:"捷径",m:"đường tắt"},{w:"长久",m:"lâu dài"}], grammar:"通往...的路 = con đường dẫn đến... 没有捷径 = không có đường tắt (thành ngữ quen thuộc)." }
+    ],
+    [
+      { topic:"Giáo dục", vi:"Giáo dục gia đình ảnh hưởng sâu sắc đến tính cách của trẻ em.", zh:"家庭教育对孩子性格的形成有深远的影响。", py:"Jiātíng jiàoyù duì háizi xìnggé de xíngchéng yǒu shēnyuǎn de yǐngxiǎng.", vocab:[{w:"性格",m:"tính cách, cá tính"},{w:"形成",m:"hình thành"},{w:"深远",m:"sâu rộng, sâu xa"}], grammar:"对...有影响 = có ảnh hưởng đến... 深远的影响 = ảnh hưởng sâu rộng." },
+      { topic:"Xã hội", vi:"Tình nguyện viên đóng góp quan trọng cho cộng đồng.", zh:"志愿者对社区做出了重要贡献。", py:"Zhìyuànzhě duì shèqū zuòchū le zhòngyào gòngxiàn.", vocab:[{w:"志愿者",m:"tình nguyện viên"},{w:"社区",m:"cộng đồng, khu dân cư"},{w:"贡献",m:"đóng góp"}], grammar:"做出贡献 = có đóng góp. 做出 + danh từ trừu tượng là cách diễn đạt chính thức." },
+      { topic:"Kinh tế", vi:"Hợp tác quốc tế là xu hướng tất yếu trong thời đại toàn cầu hóa.", zh:"国际合作是全球化时代的必然趋势。", py:"Guójì hézuò shì quánqiúhuà shídài de bìrán qūshì.", vocab:[{w:"全球化",m:"toàn cầu hóa"},{w:"必然",m:"tất yếu, nhất định"},{w:"趋势",m:"xu hướng"}], grammar:"是...的趋势 = là xu hướng của... 必然 = tất yếu (không thể tránh khỏi)." },
+      { topic:"Tâm lý", vi:"Con người thường sợ những điều chưa biết hơn là những điều đã biết.", zh:"人往往更害怕未知的事物，而不是已知的。", py:"Rén wǎngwǎng gèng hàipà wèizhī de shìwù, ér bù shì yǐzhī de.", vocab:[{w:"往往",m:"thường thường, hay"},{w:"未知",m:"chưa biết, chưa rõ"},{w:"而不是",m:"chứ không phải"}], grammar:"而不是 = chứ không phải. Đối lập hai điều. 往往 = thường (quy luật chung, không phải 经常)." },
+      { topic:"Sáng tạo", vi:"Sáng tạo cần môi trường tự do và khuyến khích thử nghiệm.", zh:"创造力需要自由的环境和对尝试的鼓励。", py:"Chuàngzào lì xūyào zìyóu de huánjìng hé duì chángshì de gǔlì.", vocab:[{w:"创造力",m:"khả năng sáng tạo"},{w:"自由",m:"tự do"},{w:"鼓励",m:"khuyến khích"}], grammar:"对...的鼓励 = sự khuyến khích đối với... 对 + N + 的 + N là cấu trúc danh hóa." },
+      { topic:"Công nghệ", vi:"Mạng xã hội kết nối mọi người nhưng cũng tạo ra nhiều vấn đề.", zh:"社交网络连接了人们，但同时也带来了很多问题。", py:"Shèjiāo wǎngluò liánjiē le rénmen, dàn tóngshí yě dài lái le hěn duō wèntí.", vocab:[{w:"连接",m:"kết nối"},{w:"同时",m:"đồng thời"},{w:"带来",m:"mang lại, đem lại"}], grammar:"但同时也 = nhưng đồng thời cũng. 带来 = mang lại (tiêu cực hoặc tích cực đều được)." },
+      { topic:"Văn hóa", vi:"Ẩm thực phản ánh văn hóa và lịch sử của một dân tộc.", zh:"饮食文化反映了一个民族的文化和历史。", py:"Yǐnshí wénhuà fǎnyìng le yī gè mínzú de wénhuà hé lìshǐ.", vocab:[{w:"饮食文化",m:"văn hóa ẩm thực"},{w:"反映",m:"phản ánh"},{w:"民族",m:"dân tộc"}], grammar:"反映 = phản ánh (phản chiếu thực tế). Phân biệt 反映 (phản ánh) và 反应 (phản ứng)." },
+      { topic:"Lịch sử", vi:"Bài học lịch sử giúp chúng ta tránh lặp lại những sai lầm quá khứ.", zh:"历史教训帮助我们避免重蹈覆辙。", py:"Lìshǐ jiàoxùn bāngzhù wǒmen bìmiǎn chóngdǎo fùzhé.", vocab:[{w:"教训",m:"bài học (từ thất bại)"},{w:"避免",m:"tránh"},{w:"重蹈覆辙",m:"lại vết xe đổ (thành ngữ)"}], grammar:"避免 + V/N = tránh làm gì. 重蹈覆辙 là thành ngữ: lặp lại sai lầm cũ." },
+      { topic:"Quan hệ", vi:"Sự tin tưởng là nền tảng của mọi mối quan hệ tốt đẹp.", zh:"信任是所有良好关系的基础。", py:"Xìnrèn shì suǒyǒu liánghǎo guānxi de jīchǔ.", vocab:[{w:"信任",m:"tin tưởng, sự tin tưởng"},{w:"良好",m:"tốt đẹp, lành mạnh"},{w:"基础",m:"nền tảng, cơ sở"}], grammar:"是...的基础 = là nền tảng của... 所有 = tất cả (mang tính toàn diện)." },
+      { topic:"Sức khỏe", vi:"Sức khỏe tâm thần quan trọng không kém sức khỏe thể chất.", zh:"心理健康和身体健康同样重要。", py:"Xīnlǐ jiànkāng hé shēntǐ jiànkāng tóngyàng zhòngyào.", vocab:[{w:"心理健康",m:"sức khỏe tâm thần"},{w:"身体健康",m:"sức khỏe thể chất"},{w:"同样",m:"như nhau, tương đương"}], grammar:"A和B同样 + tính từ = A và B như nhau về... 同样 nhấn mạnh sự tương đương." }
+    ]
+  ],
+
+  5: [
+    [
+      { topic:"Triết học", vi:"Sự tồn tại của con người không chỉ là vật chất mà còn là tinh thần.", zh:"人类的存在不仅仅是物质的，更是精神层面的。", py:"Rénlèi de cúnzài bùjǐnjǐn shì wùzhì de, gèng shì jīngshén céngmiàn de.", vocab:[{w:"人类",m:"nhân loại, loài người"},{w:"存在",m:"sự tồn tại, tồn tại"},{w:"物质",m:"vật chất"},{w:"层面",m:"tầng, phương diện"}], grammar:"不仅仅...更是 = không chỉ...mà còn là (nhấn mạnh mạnh). 层面 = phương diện, góc độ." },
+      { topic:"Khoa học", vi:"Mặc dù khoa học phát triển vượt bậc nhưng vẫn còn nhiều bí ẩn chưa được giải mã.", zh:"尽管科学突飞猛进，仍有许多谜题尚未解开。", py:"Jǐnguǎn kēxué tūfēi měngjìn, réng yǒu xǔduō mítí shàngwèi jiē kāi.", vocab:[{w:"突飞猛进",m:"tiến bộ vượt bậc (thành ngữ)"},{w:"谜题",m:"câu đố, bí ẩn"},{w:"尚未",m:"vẫn chưa"}], grammar:"突飞猛进 là thành ngữ 4 chữ: đột nhiên bay vọt tiến mạnh = tiến bộ cực nhanh. 尚未 = vẫn chưa (văn viết)." },
+      { topic:"Văn học", vi:"Văn học phản ánh xã hội đồng thời định hình tư tưởng của thế hệ sau.", zh:"文学既反映社会现实，又塑造后世的思想观念。", py:"Wénxué jì fǎnyìng shèhuì xiànshí, yòu sùzào hòushì de sīxiǎng guānniàn.", vocab:[{w:"塑造",m:"định hình, xây dựng"},{w:"后世",m:"đời sau, thế hệ sau"},{w:"观念",m:"quan niệm, ý niệm"}], grammar:"既...又 = vừa...vừa (trang trọng). 塑造 = định hình (như đúc khuôn). 后世 văn hơn 后代." },
+      { topic:"Chính trị", vi:"Dân chủ đòi hỏi không chỉ quyền bỏ phiếu mà còn sự tham gia tích cực của công dân.", zh:"民主不仅需要投票权，还需要公民的积极参与。", py:"Mínzhǔ bùjǐn xūyào tóupiào quán, hái xūyào gōngmín de jījí cānyù.", vocab:[{w:"民主",m:"dân chủ"},{w:"投票权",m:"quyền bỏ phiếu"},{w:"公民",m:"công dân"},{w:"参与",m:"tham gia"}], grammar:"不仅...还 = không chỉ...mà còn. 参与 (tham gia, đóng góp) trang trọng hơn 参加." },
+      { topic:"Kinh tế", vi:"Toàn cầu hóa đã tạo ra sự phụ thuộc lẫn nhau giữa các nền kinh tế.", zh:"全球化使各国经济之间形成了相互依存的关系。", py:"Quánqiúhuà shǐ gèguó jīngjì zhījiān xíngchéng le xiānghù yīcún de guānxi.", vocab:[{w:"相互依存",m:"phụ thuộc lẫn nhau"},{w:"使",m:"khiến, làm cho (văn viết)"},{w:"形成",m:"hình thành"}], grammar:"使 + N + V = khiến N làm/trở nên V. 之间 = giữa. 相互 = lẫn nhau, với nhau." },
+      { topic:"Môi trường", vi:"Biến đổi khí hậu là thách thức lớn nhất mà nhân loại phải đối mặt thế kỷ này.", zh:"气候变化是本世纪人类面临的最大挑战。", py:"Qìhòu biànhuà shì běn shìjì rénlèi miànlín de zuìdà tiǎozhàn.", vocab:[{w:"气候变化",m:"biến đổi khí hậu"},{w:"本世纪",m:"thế kỷ này"},{w:"面临",m:"đối mặt với, đứng trước"},{w:"挑战",m:"thách thức"}], grammar:"面临 = đối mặt với (thường cho tình huống khó khăn). 本 + thời gian = ... này (本世纪, 本年)." },
+      { topic:"Tâm lý", vi:"Cảm giác cô đơn không có nghĩa là ở một mình, mà là thiếu sự kết nối thực sự.", zh:"孤独感并不意味着独处，而是缺乏真正的情感连接。", py:"Gūdú gǎn bìng bù yìwèi zhe dúchǔ, ér shì quēfá zhēnzhèng de qínggǎn liánjiē.", vocab:[{w:"孤独感",m:"cảm giác cô đơn"},{w:"意味着",m:"có nghĩa là, ngụ ý"},{w:"缺乏",m:"thiếu, thiếu thốn"},{w:"情感连接",m:"kết nối tình cảm"}], grammar:"并不意味着 = không có nghĩa là (phủ định nhấn mạnh). 而是 = mà là (đối lập). 着 sau 意味 là trợ từ trạng thái." },
+      { topic:"Đạo đức", vi:"Quyền tự do cá nhân phải được cân bằng với trách nhiệm xã hội.", zh:"个人自由必须与社会责任相互平衡。", py:"Gèrén zìyóu bìxū yǔ shèhuì zérèn xiānghù pínghéng.", vocab:[{w:"个人",m:"cá nhân"},{w:"责任",m:"trách nhiệm"},{w:"平衡",m:"cân bằng"}], grammar:"与...相互 = với...lẫn nhau. 必须 = phải (bắt buộc tuyệt đối). 与 là giới từ văn viết của 和/跟." },
+      { topic:"Giáo dục", vi:"Hệ thống giáo dục cần thích nghi với nhu cầu thay đổi của xã hội hiện đại.", zh:"教育体系需要适应现代社会不断变化的需求。", py:"Jiàoyù tǐxì xūyào shìyìng xiàndài shèhuì bùduàn biànhuà de xūqiú.", vocab:[{w:"体系",m:"hệ thống, thể chế"},{w:"适应",m:"thích nghi, thích ứng"},{w:"需求",m:"nhu cầu"}], grammar:"适应 = thích nghi với (tích cực). 不断变化的 = không ngừng thay đổi (định ngữ phức)." },
+      { topic:"Nghệ thuật", vi:"Nghệ thuật vượt qua rào cản ngôn ngữ để chạm đến tâm hồn con người.", zh:"艺术超越语言障碍，直接触动人类的心灵。", py:"Yìshù chāoyuè yǔyán zhàng'ài, zhíjiē chùdòng rénlèi de xīnlíng.", vocab:[{w:"超越",m:"vượt qua, siêu việt"},{w:"障碍",m:"rào cản, trở ngại"},{w:"触动",m:"chạm đến, xúc động"},{w:"心灵",m:"tâm hồn"}], grammar:"超越 = vượt qua (giới hạn). 直接 + V = trực tiếp làm gì. 触动心灵 = chạm đến tâm hồn." }
+    ],
+    [
+      { topic:"Lịch sử", vi:"Lịch sử không phải là những sự kiện đã qua mà là tấm gương soi cho hiện tại.", zh:"历史不是已逝的事件，而是照亮现实的镜子。", py:"Lìshǐ bù shì yǐ shì de shìjiàn, ér shì zhàoliàng xiànshí de jìngzi.", vocab:[{w:"已逝",m:"đã qua, đã mất"},{w:"照亮",m:"soi sáng, chiếu sáng"},{w:"镜子",m:"gương"}], grammar:"不是...而是 = không phải...mà là. 照亮 = soi sáng. 已逝 văn học hơn 已经过去." },
+      { topic:"Triết học", vi:"Hạnh phúc không nằm ở điểm đến mà ở cả hành trình.", zh:"幸福不在于终点，而在于整个旅途之中。", py:"Xìngfú bù zàiyú zhōngdiǎn, ér zàiyú zhěnggè lǚtú zhīzhōng.", vocab:[{w:"在于",m:"nằm ở, ở chỗ"},{w:"终点",m:"điểm đến, đích cuối"},{w:"旅途",m:"hành trình"}], grammar:"在于 = nằm ở, cốt ở. 不在于...而在于 = không nằm ở...mà nằm ở. 之中 = ở bên trong (văn viết)." },
+      { topic:"Khoa học", vi:"Trí tuệ nhân tạo đặt ra những câu hỏi đạo đức mà xã hội chưa sẵn sàng trả lời.", zh:"人工智能提出了社会尚未准备好回答的伦理问题。", py:"Réngōng zhìnéng tíchū le shèhuì shàngwèi zhǔnbèi hǎo huídá de lúnlǐ wèntí.", vocab:[{w:"提出",m:"đặt ra, đề xuất"},{w:"尚未",m:"vẫn chưa"},{w:"伦理",m:"đạo đức, luân lý"}], grammar:"尚未 = vẫn chưa (văn viết). 准备好 = sẵn sàng. 提出问题 = đặt ra câu hỏi." },
+      { topic:"Văn hóa", vi:"Sự đa dạng văn hóa không phải là trở ngại mà là tài sản của nhân loại.", zh:"文化多样性不是障碍，而是人类共同的财富。", py:"Wénhuà duōyàngxìng bù shì zhàng'ài, ér shì rénlèi gòngtóng de cáifù.", vocab:[{w:"多样性",m:"sự đa dạng"},{w:"共同",m:"chung, cùng nhau"},{w:"财富",m:"tài sản, của cải"}], grammar:"不是...而是 phủ định quan niệm A, khẳng định quan niệm B. 共同的财富 = tài sản chung." },
+      { topic:"Chính trị", vi:"Tự do báo chí là nền tảng của xã hội dân chủ lành mạnh.", zh:"新闻自由是健康民主社会的基石。", py:"Xīnwén zìyóu shì jiànkāng mínzhǔ shèhuì de jīshí.", vocab:[{w:"新闻自由",m:"tự do báo chí"},{w:"基石",m:"nền tảng, đá nền"}], grammar:"基石 = đá nền = nền móng (hình ảnh hơn 基础). 健康 + danh từ = ... lành mạnh." },
+      { topic:"Kinh tế", vi:"Bất bình đẳng kinh tế có thể dẫn đến bất ổn xã hội nếu không được kiểm soát.", zh:"经济不平等若得不到控制，可能导致社会动荡。", py:"Jīngjì bù píngděng ruò dé bù dào kòngzhì, kěnéng dǎozhì shèhuì dòngdàng.", vocab:[{w:"不平等",m:"bất bình đẳng"},{w:"导致",m:"dẫn đến, gây ra"},{w:"动荡",m:"bất ổn, xáo trộn"}], grammar:"若 = nếu (văn viết, trang trọng hơn 如果). 导致 = dẫn đến (hậu quả tiêu cực). 得不到 = không được." },
+      { topic:"Môi trường", vi:"Thế hệ hiện tại không có quyền tiêu xài cạn kiệt tài nguyên của thế hệ mai sau.", zh:"当代人无权耗尽属于后代的自然资源。", py:"Dāngdài rén wú quán hàojìn shǔyú hòudài de zìrán zīyuán.", vocab:[{w:"当代",m:"đương đại, hiện tại"},{w:"无权",m:"không có quyền"},{w:"耗尽",m:"tiêu hết, cạn kiệt"},{w:"资源",m:"tài nguyên"}], grammar:"无权 + V = không có quyền làm gì. 耗尽 = dùng hết, cạn kiệt. 属于 = thuộc về." },
+      { topic:"Đạo đức", vi:"Sự khiêm tốn không phải là yếu đuối mà là biểu hiện của sức mạnh nội tâm.", zh:"谦逊并非软弱，而是内在力量的体现。", py:"Qiānxùn bìng fēi ruǎnruò, ér shì nèizài lìliàng de tǐxiàn.", vocab:[{w:"谦逊",m:"khiêm tốn"},{w:"并非",m:"không phải (nhấn mạnh)"},{w:"内在",m:"nội tâm, bên trong"},{w:"体现",m:"biểu hiện, thể hiện"}], grammar:"并非 = không phải (phủ định nhấn mạnh mạnh hơn 不是). 体现 = biểu hiện cụ thể ra bên ngoài." },
+      { topic:"Xã hội", vi:"Lòng trắc ẩn là yếu tố tạo nên sự gắn kết của cộng đồng.", zh:"同情心是社会凝聚力的重要来源。", py:"Tóngqíng xīn shì shèhuì níngjù lì de zhòngyào láiyuán.", vocab:[{w:"同情心",m:"lòng trắc ẩn, lòng đồng cảm"},{w:"凝聚力",m:"sức gắn kết, lực đoàn kết"},{w:"来源",m:"nguồn gốc, nguồn"}], grammar:"凝聚力 = lực gắn kết/đoàn kết. 来源 = nguồn, xuất xứ. ...的来源 = nguồn của..." },
+      { topic:"Nghệ thuật", vi:"Những tác phẩm nghệ thuật vĩ đại thường được sinh ra từ nỗi đau và trải nghiệm sâu sắc.", zh:"伟大的艺术作品往往诞生于痛苦与深刻的人生体验之中。", py:"Wěidà de yìshù zuòpǐn wǎngwǎng dànshēng yú tòngkǔ yǔ shēnkè de rénshēng tǐyàn zhīzhōng.", vocab:[{w:"诞生于",m:"được sinh ra từ, xuất hiện từ"},{w:"痛苦",m:"đau khổ, nỗi đau"},{w:"深刻",m:"sâu sắc"},{w:"体验",m:"trải nghiệm"}], grammar:"诞生于 = được sinh ra từ. 之中 = ở bên trong (văn học). 往往 = thường (quy luật chung)." }
+    ],
+    [
+      { topic:"Nhân sinh", vi:"Cuộc đời ngắn ngủi, điều quan trọng là sống có ý nghĩa chứ không phải sống lâu.", zh:"人生短暂，重要的是活得有意义，而非活得长久。", py:"Rénshēng duǎnzàn, zhòngyào de shì huó de yǒu yìyì, ér fēi huó de chángjiǔ.", vocab:[{w:"短暂",m:"ngắn ngủi, thoáng qua"},{w:"有意义",m:"có ý nghĩa"},{w:"而非",m:"chứ không phải (văn viết)"}], grammar:"而非 = chứ không phải (văn viết, trang trọng hơn 而不是). 活得 + trạng thái = sống... (bổ ngữ mức độ)." },
+      { topic:"Tâm lý", vi:"Con người có xu hướng nhớ những điều tiêu cực lâu hơn điều tích cực.", zh:"人类倾向于对负面经历记忆更深，而非正面的。", py:"Rénlèi qīngxiàng yú duì fùmiàn jīnglì jìyì gèng shēn, ér fēi zhèngmiàn de.", vocab:[{w:"倾向于",m:"có xu hướng"},{w:"负面",m:"tiêu cực, mặt trái"},{w:"记忆",m:"ký ức, nhớ"}], grammar:"倾向于 + V = có xu hướng làm gì. 负面/正面 = tiêu cực/tích cực. 对...记忆深 = nhớ...sâu." },
+      { topic:"Khoa học", vi:"Ranh giới giữa khoa học và nghệ thuật ngày càng trở nên mờ nhạt.", zh:"科学与艺术之间的界限正变得日益模糊。", py:"Kēxué yǔ yìshù zhījiān de jièxiàn zhèng biàn de rìyì móhú.", vocab:[{w:"界限",m:"ranh giới, giới hạn"},{w:"日益",m:"ngày càng (văn viết)"},{w:"模糊",m:"mờ nhạt, mơ hồ"}], grammar:"日益 = ngày càng (văn viết, trang trọng hơn 越来越). 正变得 = đang ngày càng trở nên." },
+      { topic:"Đạo đức", vi:"Mục đích tốt không thể biện minh cho phương tiện sai trái.", zh:"良好的目的不能为错误的手段辩护。", py:"Liánghǎo de mùdì bù néng wèi cuòwù de shǒuduàn biànhù.", vocab:[{w:"目的",m:"mục đích"},{w:"手段",m:"phương tiện, thủ đoạn"},{w:"辩护",m:"biện hộ, biện minh"}], grammar:"为...辩护 = biện hộ/minh cho... 目的 (mục đích) và 手段 (phương tiện) là cặp từ triết học." },
+      { topic:"Xã hội", vi:"Sự phát triển thực sự không chỉ đo bằng GDP mà còn bằng chất lượng cuộc sống.", zh:"真正的发展不能仅以GDP衡量，还需考量生活质量。", py:"Zhēnzhèng de fāzhǎn bù néng jǐn yǐ GDP héngliáng, hái xū kǎoliáng shēnghuó zhìliàng.", vocab:[{w:"衡量",m:"đo lường, đánh giá"},{w:"考量",m:"xem xét, cân nhắc"},{w:"仅",m:"chỉ (văn viết)"}], grammar:"不能仅以...衡量 = không thể chỉ đo bằng... 仅 = chỉ (văn viết, trang trọng hơn 只)." },
+      { topic:"Văn học", vi:"Ngôn ngữ không chỉ là công cụ giao tiếp mà còn là cách tư duy.", zh:"语言不仅是交流工具，更是一种思维方式。", py:"Yǔyán bùjǐn shì jiāoliú gōngjù, gèng shì yī zhǒng sīwéi fāngshì.", vocab:[{w:"工具",m:"công cụ"},{w:"思维",m:"tư duy, cách nghĩ"},{w:"方式",m:"phương thức, cách thức"}], grammar:"不仅是...更是 = không chỉ là...mà còn hơn là. 更 nhấn mạnh điều thứ hai quan trọng hơn." },
+      { topic:"Lịch sử", vi:"Những nền văn minh vĩ đại đều sụp đổ khi không còn khả năng thích nghi.", zh:"所有伟大的文明都因无法适应变化而走向衰落。", py:"Suǒyǒu wěidà de wénmíng dōu yīn wúfǎ shìyìng biànhuà ér zǒuxiàng shuāiluò.", vocab:[{w:"文明",m:"văn minh"},{w:"衰落",m:"suy tàn, sụp đổ"},{w:"无法",m:"không thể, không có cách"}], grammar:"因...而... = vì...mà... (nguyên nhân - kết quả). 走向 = đi về phía, dẫn đến." },
+      { topic:"Triết học", vi:"Chính trong nghịch cảnh, bản chất thật sự của con người mới lộ rõ nhất.", zh:"正是在逆境中，人的真实本性才得以充分展现。", py:"Zhèngshì zài nìjìng zhōng, rén de zhēnshí běnxìng cái dé yǐ chōngfèn zhǎnxiàn.", vocab:[{w:"逆境",m:"nghịch cảnh, hoàn cảnh khó khăn"},{w:"本性",m:"bản tính, bản chất"},{w:"得以",m:"được, có dịp"}], grammar:"正是...才 = chính là...mới. 得以 + V = được làm gì, có dịp làm gì (văn học). 充分 = đầy đủ, toàn diện." },
+      { topic:"Nhân sinh", vi:"Thời gian là thứ duy nhất không thể mua được bằng tiền bạc.", zh:"时间是唯一无法用金钱购买的东西。", py:"Shíjiān shì wéiyī wúfǎ yòng jīnqián gòumǎi de dōngxi.", vocab:[{w:"唯一",m:"duy nhất"},{w:"无法",m:"không thể"},{w:"购买",m:"mua, mua sắm (trang trọng)"}], grammar:"唯一 = duy nhất. 无法 + V = không thể làm gì. 购买 trang trọng hơn 买, dùng trong văn viết." },
+      { topic:"Khoa học", vi:"Những khám phá lớn thường đến từ việc đặt câu hỏi về những điều mọi người cho là hiển nhiên.", zh:"重大发现往往来自于质疑那些人们视为理所当然的事物。", py:"Zhòngdà fāxiàn wǎngwǎng láizìyú zhìyí nàxiē rénmen shì wéi lǐsuǒdāngráng de shìwù.", vocab:[{w:"质疑",m:"đặt câu hỏi, nghi vấn"},{w:"视为",m:"coi là, xem là"},{w:"理所当然",m:"lẽ đương nhiên, hiển nhiên"}], grammar:"理所当然 = lẽ đương nhiên (thành ngữ). 视为 = coi là. 来自于 = đến từ (nguồn gốc)." }
+    ],
+    [
+      { topic:"Văn hóa", vi:"Sự tiếp xúc giữa các nền văn hóa tạo ra sáng tạo nhưng cũng gây xung đột.", zh:"文化之间的接触既能激发创造力，也可能引发冲突。", py:"Wénhuà zhījiān de jiēchù jì néng jīfā chuàngzào lì, yě kěnéng yǐnfā chōngtū.", vocab:[{w:"接触",m:"tiếp xúc"},{w:"激发",m:"kích thích, khơi dậy"},{w:"引发",m:"gây ra, khiến bùng phát"}], grammar:"既能...也可能 = vừa có thể...cũng có thể. 激发 (kích thích tích cực) khác 引发 (gây ra, thường tiêu cực)." },
+      { topic:"Giáo dục", vi:"Giáo dục phê phán tư duy quan trọng hơn là truyền đạt kiến thức thuần túy.", zh:"培养批判性思维比单纯传授知识更为重要。", py:"Péiyǎng pīpàn xìng sīwéi bǐ dānchún chuánshòu zhīshì gèngwéi zhòngyào.", vocab:[{w:"培养",m:"bồi dưỡng, nuôi dưỡng"},{w:"批判性思维",m:"tư duy phê phán"},{w:"单纯",m:"thuần túy, đơn thuần"}], grammar:"更为 = càng...hơn (văn viết, mạnh hơn 更). 传授 = truyền đạt, truyền thụ (kiến thức)." },
+      { topic:"Chính trị", vi:"Trong thế giới phẳng, các vấn đề toàn cầu cần giải pháp toàn cầu.", zh:"在平坦的世界里，全球性问题需要全球性的解决方案。", py:"Zài píngtǎn de shìjiè lǐ, quánqiúxìng wèntí xūyào quánqiúxìng de jiějué fāng'àn.", vocab:[{w:"平坦",m:"bằng phẳng, phẳng"},{w:"全球性",m:"toàn cầu (tính từ)"},{w:"方案",m:"phương án, giải pháp"}], grammar:"性 sau danh từ tạo tính từ: 全球性 = mang tính toàn cầu. 方案 = phương án (cụ thể hơn 方法)." },
+      { topic:"Đạo đức", vi:"Trách nhiệm với thế hệ tương lai đòi hỏi ta hy sinh lợi ích ngắn hạn.", zh:"对未来世代的责任要求我们牺牲短期利益。", py:"Duì wèilái shìdài de zérèn yāoqiú wǒmen xīshēng duǎnqī lìyì.", vocab:[{w:"世代",m:"thế hệ, đời"},{w:"牺牲",m:"hy sinh"},{w:"短期",m:"ngắn hạn"},{w:"利益",m:"lợi ích"}], grammar:"要求 + N + V = đòi hỏi ai làm gì. 牺牲 = hy sinh. 短期/长期 = ngắn hạn/dài hạn." },
+      { topic:"Tâm lý", vi:"Khả năng phục hồi sau khó khăn là dấu hiệu của sức mạnh tâm lý.", zh:"从困难中恢复的能力是心理韧性的体现。", py:"Cóng kùnnán zhōng huīfù de nénglì shì xīnlǐ rènxìng de tǐxiàn.", vocab:[{w:"恢复",m:"phục hồi, hồi phục"},{w:"韧性",m:"sức bền, khả năng chịu đựng"},{w:"体现",m:"biểu hiện, thể hiện"}], grammar:"从...中恢复 = phục hồi từ... 韧性 = độ bền dẻo (resilience). 的体现 = sự biểu hiện của." },
+      { topic:"Triết học", vi:"Ý nghĩa cuộc sống không được tìm thấy mà được tạo ra qua hành động.", zh:"生命的意义不是被发现的，而是通过行动创造出来的。", py:"Shēngmìng de yìyì bù shì bèi fāxiàn de, ér shì tōngguò xíngdòng chuàngzào chūlái de.", vocab:[{w:"生命",m:"cuộc sống, mạng sống"},{w:"通过",m:"thông qua, qua"},{w:"创造",m:"tạo ra, sáng tạo"}], grammar:"被 + V = bị/được làm (bị động). 不是被...而是通过...创造 = không phải được tìm thấy mà được tạo ra qua." },
+      { topic:"Nhân sinh", vi:"Sự trưởng thành thực sự đến khi ta nhận ra mình không biết nhiều như đã nghĩ.", zh:"真正的成熟来自于认识到自己所知远比想象的少。", py:"Zhēnzhèng de chéngshú láizìyú rènshídào zìjǐ suǒzhī yuǎn bǐ xiǎngxiàng de shǎo.", vocab:[{w:"成熟",m:"trưởng thành, chín chắn"},{w:"所知",m:"những gì biết được"},{w:"远比",m:"còn...hơn nhiều"}], grammar:"所知 = 所 + V = những gì được V (danh hóa). 远比 = hơn rất nhiều (nhấn mạnh khoảng cách lớn)." },
+      { topic:"Khoa học", vi:"Mỗi câu trả lời khoa học lại mở ra hàng trăm câu hỏi mới.", zh:"每一个科学答案都会引出数百个新的问题。", py:"Měi yī gè kēxué dá'àn dōu huì yǐnchū shùbǎi gè xīn de wèntí.", vocab:[{w:"答案",m:"câu trả lời, đáp án"},{w:"引出",m:"dẫn ra, mở ra"},{w:"数百",m:"hàng trăm"}], grammar:"数 + từ chỉ số lớn = hàng... 数百 = hàng trăm, 数千 = hàng nghìn. 引出 = dẫn ra (kéo theo)." },
+      { topic:"Văn học", vi:"Tiểu thuyết vĩ đại không đưa ra câu trả lời mà đặt ra những câu hỏi đúng đắn.", zh:"伟大的小说不提供答案，而是提出正确的问题。", py:"Wěidà de xiǎoshuō bù tígōng dá'àn, ér shì tíchū zhèngquè de wèntí.", vocab:[{w:"小说",m:"tiểu thuyết, truyện"},{w:"提供",m:"cung cấp, đưa ra"},{w:"正确",m:"đúng đắn, chính xác"}], grammar:"提供 = cung cấp. 提出 = đưa ra, đặt ra (câu hỏi, đề nghị). Hai từ khác nhau quan trọng." }
+    ]
+  ],
+
+  6: [
+    [
+      { topic:"Triết học", vi:"Nghịch lý của tự do là con người sợ hãi chính cái mà họ khao khát nhất.", zh:"自由的悖论在于，人们往往恐惧他们最渴望的东西。", py:"Zìyóu de bèilùn zàiyú, rénmen wǎngwǎng kǒngjù tāmen zuì kěwàng de dōngxi.", vocab:[{w:"悖论",m:"nghịch lý"},{w:"恐惧",m:"sợ hãi, kinh hoàng"},{w:"渴望",m:"khao khát, mong muốn tha thiết"}], grammar:"悖论 = nghịch lý (paradox). 在于 = nằm ở. 往往 + V = thường... (quy luật quan sát được)." },
+      { topic:"Văn học", vi:"Những nhà văn thực sự vĩ đại không phản ánh thời đại của họ mà định hình nó.", zh:"真正伟大的作家不是反映他们的时代，而是塑造它。", py:"Zhēnzhèng wěidà de zuòjiā bù shì fǎnyìng tāmen de shídài, ér shì sùzào tā.", vocab:[{w:"作家",m:"nhà văn, tác giả"},{w:"塑造",m:"định hình, tạo khuôn"}], grammar:"不是...而是 = không phải...mà là. 塑造 = định hình như đúc khuôn (hình ảnh mạnh hơn 影响)." },
+      { topic:"Chính trị", vi:"Quyền lực tuyệt đối dẫn đến tham nhũng tuyệt đối - lịch sử đã chứng minh.", zh:"绝对的权力导致绝对的腐败——历史已为此作证。", py:"Juéduì de quánlì dǎozhì juéduì de fǔbài——lìshǐ yǐ wéi cǐ zuòzhèng.", vocab:[{w:"绝对",m:"tuyệt đối"},{w:"腐败",m:"tham nhũng, thối nát"},{w:"为此作证",m:"làm chứng cho điều này"}], grammar:"导致 = dẫn đến (hậu quả). 为此作证 = làm chứng cho điều này. 已 = đã (văn viết)." },
+      { topic:"Khoa học", vi:"Trong vũ trụ vô tận, sự tồn tại của sự sống có ý thức là một điều kỳ diệu thống kê.", zh:"在无限的宇宙中，有意识的生命的存在是一个统计学奇迹。", py:"Zài wúxiàn de yǔzhòu zhōng, yǒu yìshí de shēngmìng de cúnzài shì yī gè tǒngjìxué qíjì.", vocab:[{w:"无限",m:"vô tận, vô hạn"},{w:"意识",m:"ý thức"},{w:"统计学",m:"thống kê học"},{w:"奇迹",m:"kỳ diệu, phép màu"}], grammar:"有意识的 = có ý thức (tính từ phức). 统计学奇迹 = kỳ diệu về mặt thống kê. 在...中 = trong..." },
+      { topic:"Nhân sinh", vi:"Con người không tìm kiếm ý nghĩa mà tạo ra nó qua những lựa chọn của mình.", zh:"人类并非寻找意义，而是通过自身的选择将其创造出来。", py:"Rénlèi bìng fēi xúnzhǎo yìyì, ér shì tōngguò zìshēn de xuǎnzé jiāng qí chuàngzào chūlái.", vocab:[{w:"并非",m:"không phải (nhấn mạnh)"},{w:"自身",m:"bản thân, của mình"},{w:"将",m:"(giới từ bổ ngữ, đưa tân ngữ lên trước)"}], grammar:"将+N+V = đưa N lên trước động từ (câu 把 trang trọng). 并非 mạnh hơn 不是. 自身 trang trọng hơn 自己." },
+      { topic:"Xã hội", vi:"Sự bình đẳng đích thực không phải là đối xử giống nhau mà là trao cơ hội như nhau.", zh:"真正的平等不是同等对待，而是赋予相同的机会。", py:"Zhēnzhèng de píngděng bù shì tóngtóng duìdài, ér shì fùyǔ xiāngtóng de jīhuì.", vocab:[{w:"对待",m:"đối đãi, đối xử"},{w:"赋予",m:"trao cho, ban cho"},{w:"相同",m:"như nhau, giống nhau"}], grammar:"赋予 = trao/ban cho (trang trọng). 不是...而是 đối lập quan niệm. 同等 = ngang bằng, như nhau." },
+      { topic:"Văn hóa", vi:"Nền văn minh được đo không phải bằng công nghệ mà bằng cách đối xử với những người yếu thế.", zh:"文明的衡量标准不在于技术，而在于对弱势群体的态度。", py:"Wénmíng de héngliáng biāozhǔn bù zàiyú jìshù, ér zàiyú duì ruòshì qúntǐ de tàidù.", vocab:[{w:"衡量标准",m:"tiêu chuẩn đánh giá, thước đo"},{w:"弱势群体",m:"người yếu thế, nhóm thiệt thòi"},{w:"态度",m:"thái độ"}], grammar:"不在于...而在于 = không nằm ở...mà nằm ở. 弱势群体 = nhóm yếu thế (thuật ngữ xã hội học)." },
+      { topic:"Đạo đức", vi:"Lương tâm không phải là tiếng nói của xã hội trong ta mà là tiếng nói thật sự của ta.", zh:"良知并不是社会在我们内心的声音，而是我们真实的声音。", py:"Liángzhī bìng bù shì shèhuì zài wǒmen nèixīn de shēngyīn, ér shì wǒmen zhēnshí de shēngyīn.", vocab:[{w:"良知",m:"lương tâm, lương tri"},{w:"内心",m:"nội tâm, trong lòng"},{w:"声音",m:"giọng nói, tiếng nói"}], grammar:"良知 = lương tri (sâu sắc hơn 良心). 并不是 phủ định nhấn mạnh. 内心的 = thuộc về nội tâm." },
+      { topic:"Lịch sử", vi:"Mỗi thế hệ tưởng mình là điểm đỉnh của lịch sử nhưng luôn chỉ là một chương.", zh:"每一代人都以为自己站在历史的顶点，却不过是其中的一个章节。", py:"Měi yī dài rén dōu yǐwéi zìjǐ zhàn zài lìshǐ de dǐngdiǎn, què bùguò shì qízhōng de yī gè zhāngjié.", vocab:[{w:"以为",m:"tưởng, cho rằng (thường sai)"},{w:"顶点",m:"đỉnh điểm"},{w:"不过",m:"chỉ là, không hơn"},{w:"章节",m:"chương, đoạn"}], grammar:"以为 = tưởng/cho rằng (thường kết quả sai). 却 = nhưng, lại (chuyển hướng bất ngờ). 不过 = chỉ, không hơn." },
+      { topic:"Triết học", vi:"Sự khôn ngoan thực sự bắt đầu bằng việc thừa nhận những gì ta không biết.", zh:"真正的智慧始于承认自己无知的那一刻。", py:"Zhēnzhèng de zhìhuì shǐyú chéngrèn zìjǐ wúzhī de nà yī kè.", vocab:[{w:"智慧",m:"trí tuệ, khôn ngoan"},{w:"始于",m:"bắt đầu từ"},{w:"承认",m:"thừa nhận"},{w:"无知",m:"vô tri, không biết gì"}], grammar:"始于 = bắt đầu từ (văn viết, trang trọng hơn 从...开始). 无知 = vô tri (triết học: Socrates). 那一刻 = khoảnh khắc đó." }
+    ],
+    [
+      { topic:"Văn học", vi:"Ẩn dụ không phải là cách nói hoa mỹ mà là công cụ tư duy cơ bản của con người.", zh:"隐喻并非修辞的装饰，而是人类思维的基本工具。", py:"Yǐnyù bìng fēi xiūcí de zhuāngshì, ér shì rénlèi sīwéi de jīběn gōngjù.", vocab:[{w:"隐喻",m:"ẩn dụ, metaphor"},{w:"修辞",m:"tu từ, hoa văn lời nói"},{w:"装饰",m:"trang trí, điểm tô"}], grammar:"并非 = không phải (nhấn mạnh mạnh). 修辞的装饰 = đồ trang trí của tu từ = hoa mỹ. 基本工具 = công cụ cơ bản." },
+      { topic:"Khoa học", vi:"Ý thức vẫn là bí ẩn lớn nhất của khoa học thần kinh hiện đại.", zh:"意识仍然是现代神经科学最深的谜题之一。", py:"Yìshí réngrán shì xiàndài shénjīng kēxué zuì shēn de mítí zhī yī.", vocab:[{w:"意识",m:"ý thức, consciousness"},{w:"神经科学",m:"khoa học thần kinh"},{w:"谜题",m:"câu đố, bí ẩn"}], grammar:"仍然 = vẫn còn (nhấn mạnh tính bền vững). 之一 = một trong số. 最...之一 = một trong những...nhất." },
+      { topic:"Chính trị", vi:"Dân chủ không phải là hệ thống hoàn hảo mà là hệ thống ít tồi tệ nhất.", zh:"民主并非完美的制度，而是相对最不坏的制度。", py:"Mínzhǔ bìng fēi wánměi de zhìdù, ér shì xiāngduì zuì bù huài de zhìdù.", vocab:[{w:"制度",m:"chế độ, hệ thống"},{w:"相对",m:"tương đối"},{w:"完美",m:"hoàn hảo, hoàn mỹ"}], grammar:"最不坏 = ít tồi tệ nhất (phủ định thượng cấp). 相对 = tương đối. 制度 = chế độ, thể chế." },
+      { topic:"Nhân sinh", vi:"Tự do đích thực không phải làm bất cứ điều gì mình muốn mà làm điều mình nên làm.", zh:"真正的自由不在于随心所欲，而在于做应该做的事。", py:"Zhēnzhèng de zìyóu bù zàiyú suíxīn suǒyù, ér zàiyú zuò yīnggāi zuò de shì.", vocab:[{w:"随心所欲",m:"làm theo ý muốn, tùy tâm sở dục (thành ngữ)"},{w:"应该",m:"nên, phải"}], grammar:"随心所欲 là thành ngữ 4 chữ: tùy lòng sở muốn. 不在于...而在于 = không nằm ở...mà nằm ở." },
+      { topic:"Xã hội", vi:"Sự im lặng trước bất công cũng là một hình thức tham gia vào bất công đó.", zh:"在不公正面前沉默，本身就是对不公正的一种参与。", py:"Zài bù gōngzhèng miànqián chénmò, běnshēn jiùshì duì bù gōngzhèng de yī zhǒng cānyù.", vocab:[{w:"不公正",m:"bất công"},{w:"沉默",m:"im lặng, sự im lặng"},{w:"本身",m:"bản thân nó, tự nó"}], grammar:"本身 = bản thân nó. 就是 nhấn mạnh kết luận. 在...面前 = trước/đứng trước... (địa điểm trừu tượng)." },
+      { topic:"Đạo đức", vi:"Cái ác cũng có thể tồn tại ở sự thờ ơ, không chỉ ở hành động chủ động.", zh:"邪恶也可以存在于冷漠之中，而不仅仅是主动的行为。", py:"Xiéè yě kěyǐ cúnzài yú lěngmò zhīzhōng, ér bù jǐnjǐn shì zhǔdòng de xíngwéi.", vocab:[{w:"邪恶",m:"cái ác, xấu xa"},{w:"冷漠",m:"thờ ơ, lạnh lùng"},{w:"主动",m:"chủ động, tự nguyện"}], grammar:"存在于 = tồn tại ở trong. 而不仅仅是 = chứ không chỉ là. 主动的行为 = hành động chủ động." },
+      { topic:"Triết học", vi:"Ngôn ngữ không chỉ mô tả thực tại mà còn kiến tạo nó.", zh:"语言不仅描述现实，还在一定程度上构建它。", py:"Yǔyán bùjǐn miáoshù xiànshí, hái zài yīdìng chéngdù shàng gòujiàn tā.", vocab:[{w:"描述",m:"mô tả, miêu tả"},{w:"现实",m:"thực tại, thực tế"},{w:"构建",m:"kiến tạo, xây dựng"},{w:"一定程度",m:"ở một mức độ nhất định"}], grammar:"在一定程度上 = ở một mức độ nhất định (cách diễn đạt thận trọng học thuật). 构建 = kiến tạo (trang trọng hơn 建立)." },
+      { topic:"Văn hóa", vi:"Sự mai một của ngôn ngữ là sự mất mát không thể bù đắp cho di sản văn minh nhân loại.", zh:"语言的消亡是人类文明遗产无可挽回的损失。", py:"Yǔyán de xiāowáng shì rénlèi wénmíng yíchǎn wúkě wǎnhuí de sǔnshī.", vocab:[{w:"消亡",m:"mai một, biến mất"},{w:"遗产",m:"di sản"},{w:"无可挽回",m:"không thể cứu vãn, không thể bù đắp"}], grammar:"无可挽回 = không thể cứu vãn (thành ngữ 4 chữ). 的损失 = sự mất mát của. 消亡 = biến mất hoàn toàn." },
+      { topic:"Lịch sử", vi:"Lịch sử được viết bởi kẻ chiến thắng, nhưng được sống bởi tất cả mọi người.", zh:"历史由胜利者书写，却由所有人共同承担。", py:"Lìshǐ yóu shènglì zhě shūxiě, què yóu suǒyǒu rén gòngtóng chéngdān.", vocab:[{w:"胜利者",m:"kẻ chiến thắng"},{w:"书写",m:"viết, ghi chép"},{w:"承担",m:"gánh chịu, đảm nhận"}], grammar:"由 + N + V = được N làm. 由...书写 = được viết bởi. 却 = nhưng (chuyển hướng bất ngờ, đối lập)." },
+      { topic:"Nhân sinh", vi:"Sự trưởng thành không phải là từ bỏ giấc mơ mà là học cách theo đuổi chúng khôn ngoan hơn.", zh:"成熟不是放弃梦想，而是学会以更智慧的方式追求它们。", py:"Chéngshú bù shì fàngqì mèngxiǎng, ér shì xuéhuì yǐ gèng zhìhuì de fāngshì zhuīqiú tāmen.", vocab:[{w:"放弃",m:"từ bỏ, buông bỏ"},{w:"梦想",m:"giấc mơ, lý tưởng"},{w:"追求",m:"theo đuổi, tìm kiếm"}], grammar:"学会 = học được (kết quả thành công). 以...方式 = theo cách... 不是...而是 đối lập hai quan niệm." }
+    ],
+    [
+      { topic:"Triết học", vi:"Sự bất tử mà con người khát khao thực ra là sự bất tử của ký ức và ảnh hưởng.", zh:"人类渴求的不朽，实际上是记忆与影响力的不朽。", py:"Rénlèi kěqiú de bùxiǔ, shíjìshàng shì jìyì yǔ yǐngxiǎnglì de bùxiǔ.", vocab:[{w:"渴求",m:"khát khao, mong cầu tha thiết"},{w:"不朽",m:"bất tử, bất hủ"},{w:"实际上",m:"thực ra, thực tế là"}], grammar:"实际上 = thực ra (hiệu chỉnh nhận thức sai). 影响力 = sức ảnh hưởng (力 hóa trừu tượng thành danh từ). 的 + 不朽 = sự bất tử của..." },
+      { topic:"Xã hội", vi:"Tiến bộ xã hội không phải là đường thẳng mà là quá trình đầy tranh đấu và thụt lùi.", zh:"社会进步并非直线发展，而是充满斗争与倒退的过程。", py:"Shèhuì jìnbù bìng fēi zhíxiàn fāzhǎn, ér shì chōngmǎn dòuzhēng yǔ dàotuì de guòchéng.", vocab:[{w:"直线",m:"đường thẳng"},{w:"斗争",m:"tranh đấu, cuộc đấu"},{w:"倒退",m:"thụt lùi, đi lùi"}], grammar:"充满...的过程 = quá trình đầy... 并非 = không phải (nhấn mạnh). 与 nối hai danh từ (văn viết của 和)." },
+      { topic:"Văn học", vi:"Bi kịch vĩ đại không đến từ việc tốt chống ác mà từ xung đột giữa hai điều tốt.", zh:"伟大的悲剧不是善与恶的对抗，而是两种善的冲突。", py:"Wěidà de bēijù bù shì shàn yǔ è de duìkàng, ér shì liǎng zhǒng shàn de chōngtū.", vocab:[{w:"悲剧",m:"bi kịch, tragedy"},{w:"对抗",m:"đối kháng, chống lại"},{w:"冲突",m:"xung đột, mâu thuẫn"}], grammar:"善与恶 = thiện và ác. 对抗 = đối kháng trực tiếp. 冲突 = xung đột phức tạp hơn." },
+      { topic:"Khoa học", vi:"Khoa học không cung cấp chân lý tuyệt đối mà cung cấp các mô hình tốt nhất hiện tại.", zh:"科学不提供绝对真理，而是提供目前最优的解释模型。", py:"Kēxué bù tígōng juéduì zhēnlǐ, ér shì tígōng mùqián zuì yōu de jiěshì móxíng.", vocab:[{w:"真理",m:"chân lý, sự thật"},{w:"目前",m:"hiện tại, hiện nay"},{w:"最优",m:"tốt nhất, tối ưu"},{w:"模型",m:"mô hình, model"}], grammar:"最优 = tối ưu (tốt nhất về hiệu quả). 解释模型 = mô hình giải thích. 目前 = thời điểm hiện tại." },
+      { topic:"Nhân sinh", vi:"Nghịch lý của sự lựa chọn là khi có quá nhiều lựa chọn, con người lại trở nên bất hạnh hơn.", zh:"选择的悖论在于，当选项过多时，人往往更加不幸福。", py:"Xuǎnzé de bèilùn zàiyú, dāng xuǎnxiàng guòduō shí, rén wǎngwǎng gèngjiā bù xìngfú.", vocab:[{w:"选项",m:"lựa chọn, tùy chọn (phương án)"},{w:"过多",m:"quá nhiều"},{w:"更加",m:"càng...hơn"}], grammar:"当...时 = khi... 更加 = càng...hơn (trước tính từ, nhấn mạnh). 往往 = thường (quy luật)." },
+      { topic:"Chính trị", vi:"Sức mạnh mềm thường hiệu quả hơn cưỡng bức trong quan hệ quốc tế lâu dài.", zh:"软实力在国际关系的长远影响上往往强过强制手段。", py:"Ruǎn shílì zài guójì guānxi de chángyuǎn yǐngxiǎng shàng wǎngwǎng qiáng guò qiǎngzhì shǒuduàn.", vocab:[{w:"软实力",m:"sức mạnh mềm, soft power"},{w:"强制手段",m:"biện pháp cưỡng bức"},{w:"长远",m:"lâu dài, dài hạn"}], grammar:"强过 = mạnh hơn, hiệu quả hơn. 在...上 = về mặt, trên phương diện. 往往 = thường (quy luật chung)." },
+      { topic:"Đạo đức", vi:"Sự tha thứ không phải vì người gây ra lỗi xứng đáng được tha mà vì bản thân ta cần giải phóng.", zh:"宽恕不是因为对方值得被原谅，而是因为自己需要从中解脱。", py:"Kuānshù bù shì yīnwèi duìfāng zhídé bèi yuánliàng, ér shì yīnwèi zìjǐ xūyào cóng zhōng jiětuō.", vocab:[{w:"宽恕",m:"tha thứ, khoan hồng"},{w:"值得",m:"xứng đáng"},{w:"解脱",m:"giải thoát, thoát khỏi"}], grammar:"不是因为...而是因为 = không phải vì...mà vì. 从中 = từ đó, từ trong đó. 被原谅 = được tha thứ (bị động)." },
+      { topic:"Văn hóa", vi:"Những nền văn hóa không có khả năng tự phê bình sẽ không thể phát triển bền vững.", zh:"缺乏自我批判能力的文化，无法实现可持续发展。", py:"Quēfá zìwǒ pīpàn nénglì de wénhuà, wúfǎ shíxiàn kě chíxù fāzhǎn.", vocab:[{w:"自我批判",m:"tự phê bình"},{w:"可持续",m:"bền vững, có thể duy trì"},{w:"实现",m:"thực hiện, đạt được"}], grammar:"缺乏 + N = thiếu, không có. 可持续发展 = phát triển bền vững (thuật ngữ chính thức). 无法 = không thể." },
+      { topic:"Lịch sử", vi:"Đế quốc nào cũng tin rằng sự sụp đổ là chuyện của người khác, không phải mình.", zh:"每一个帝国都相信覆灭是别人的命运，而非自身的。", py:"Měi yī gè dìguó dōu xiāngxìn fùmiè shì biérén de mìngyùn, ér fēi zìshēn de.", vocab:[{w:"帝国",m:"đế quốc"},{w:"覆灭",m:"sụp đổ, tiêu vong"},{w:"命运",m:"số mệnh, vận mệnh"}], grammar:"覆灭 = tiêu vong hoàn toàn (mạnh hơn 失败). 而非 = chứ không phải (văn viết). 自身 = bản thân mình." },
+      { topic:"Triết học", vi:"Mọi hệ thống tư tưởng đều chứa đựng mầm mống của sự tự phủ nhận.", zh:"任何思想体系都蕴含着自我否定的种子。", py:"Rènhé sīxiǎng tǐxì dōu yùnhán zhe zìwǒ fǒudìng de zhǒngzi.", vocab:[{w:"思想体系",m:"hệ thống tư tưởng"},{w:"蕴含",m:"chứa đựng, ẩn chứa"},{w:"否定",m:"phủ nhận, phủ định"},{w:"种子",m:"hạt giống, mầm mống"}], grammar:"蕴含 = ẩn chứa bên trong (sâu xa hơn 包含). 自我否定 = tự phủ nhận. 着 sau V = trạng thái đang duy trì." }
+    ]
+  ]
 };
 
-const LEVEL_PROMPT = {
-  1: `HSK 1 (sơ cấp): Dùng chỉ ~150 từ HSK1. Câu rất đơn giản: chủ ngữ + động từ + tân ngữ. 3-6 từ. Chủ đề: chào hỏi, số đếm, gia đình, đồ vật cơ bản, màu sắc, thời gian đơn giản.`,
-  2: `HSK 2 (cơ bản): Dùng từ HSK1-2 (~300 từ). Câu đơn giản 6-10 từ. Có phó từ (很,也,还,太), so sánh đơn giản, hỏi đường cơ bản. Chủ đề: mua sắm đơn giản, thể thao, thời tiết cơ bản.`,
-  3: `HSK 3 (trung cấp): Dùng từ HSK1-3 (~600 từ). Câu 10-15 từ. Dùng kết cấu: 因为...所以, 虽然...但是, 又...又, 如果...就, 已经...了, 把字句 cơ bản. Chủ đề: công việc, sức khỏe, du lịch, cảm xúc.`,
-  4: `HSK 4 (trung cao): Dùng từ HSK1-4 (~1200 từ). Câu 12-18 từ. Dùng: 被字句, 把字句 phức tạp, 只有...才, 不管...都, 越来越, 对...来说, trạng ngữ phức hợp. Chủ đề: kinh tế, văn hóa, môi trường, xã hội.`,
-  5: `HSK 5 (cao cấp): Dùng từ HSK1-5 (~2500 từ). Câu 15-22 từ. Dùng: 尽管...还是, 即使...也, 不仅...而且, 就...而言, 与其...不如, câu phức nhiều vế. Chủ đề: khoa học, chính trị, triết học, văn học.`,
-  6: `HSK 6 (thành thạo): Dùng từ vựng phong phú HSK6. Câu 18-28 từ. Dùng thành ngữ, cấu trúc văn học, câu phức tạp như người bản ngữ. Chủ đề: học thuật, nghị luận, thời sự, văn chương.`,
-};
+const LV_COLORS = {1:'#a8d8f0',2:'#a8e6c8',3:'#ffd6a0',4:'#d4b8f0',5:'#ffb8b8',6:'#f0d890'};
 
-let curLevel = 1;
-let sentences = [];
-let cur = 0;
-let apiKey = '';
+let curLv = 1, curSet = 0, cur = 0;
 
 function getDay() {
   return Math.floor((Date.now() - new Date('2025-01-01')) / 86400000) + 1;
 }
 
-function saveKey() {
-  const k = document.getElementById('api-key-input').value.trim();
-  if (!k.startsWith('sk-ant-') && !k.startsWith('sk-')) {
-    alert('API key không hợp lệ. Key bắt đầu bằng sk-ant-...');
-    return;
-  }
-  apiKey = k;
-  localStorage.setItem('anthropic_key', k);
-  document.getElementById('api-banner').classList.remove('show');
-  loadSet();
-}
-
-function loadStoredKey() {
-  const k = localStorage.getItem('anthropic_key');
-  if (k) {
-    apiKey = k;
-    document.getElementById('api-banner').classList.remove('show');
-    return true;
-  }
-  return false;
-}
-
 function setLevel(lv, btn) {
-  curLevel = lv;
+  curLv = lv;
+  curSet = 0;
+  cur = 0;
   document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const color = HSK_INFO[lv].color;
-  document.querySelector('.progress-fill').style.background = color;
-  if (apiKey) loadSet();
+  document.getElementById('prog-fill').style.background = '';
+  buildSetBtns();
+  renderExercise();
 }
 
-async function loadSet() {
-  document.getElementById('exercise-area').style.display = 'none';
-  document.getElementById('done-screen').classList.remove('show');
-  document.getElementById('error-box').classList.remove('show');
-  document.getElementById('loading').classList.add('show');
-
-  const prompt = `Tạo 10 mẫu câu luyện dịch Việt–Trung cho ${HSK_INFO[curLevel].name}.
-
-Yêu cầu cấp độ: ${LEVEL_PROMPT[curLevel]}
-
-Mỗi câu phải có chủ đề KHÁC NHAU. Tránh lặp lại câu đã dùng.
-
-Trả về JSON hợp lệ theo đúng format sau, KHÔNG có markdown, KHÔNG có text nào khác ngoài JSON:
-{
-  "sentences": [
-    {
-      "topic": "tên chủ đề ngắn (1-2 từ tiếng Việt)",
-      "vi": "câu tiếng Việt",
-      "zh": "câu tiếng Trung",
-      "py": "pinyin đầy đủ có dấu thanh",
-      "vocab": [
-        {"word": "từ TQ", "meaning": "nghĩa TV"}
-      ],
-      "grammar": "giải thích ngắn 1-2 câu về điểm ngữ pháp quan trọng trong câu"
-    }
-  ]
+function buildSetBtns() {
+  const sets = DATA[curLv];
+  const container = document.getElementById('set-btns');
+  container.innerHTML = '';
+  sets.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.className = 'set-btn' + (i === curSet ? ' active' : '');
+    b.textContent = 'Bộ ' + (i + 1);
+    b.onclick = () => {
+      curSet = i;
+      cur = 0;
+      document.querySelectorAll('.set-btn').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      document.getElementById('done-screen').classList.remove('show');
+      document.getElementById('exercise-area').style.display = '';
+      renderExercise();
+    };
+    container.appendChild(b);
+  });
 }
 
-Chỉ trả về JSON. Không có bất kỳ text nào khác.`;
-
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 3000,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.error?.message || `HTTP ${res.status}`);
-    }
-
-    const data = await res.json();
-    const raw = data.content.map(c => c.text || '').join('');
-    const clean = raw.replace(/```json|```/g, '').trim();
-    const parsed = JSON.parse(clean);
-
-    sentences = parsed.sentences;
-    cur = 0;
-
-    document.getElementById('loading').classList.remove('show');
-    document.getElementById('exercise-area').style.display = 'block';
-    render();
-
-  } catch (e) {
-    document.getElementById('loading').classList.remove('show');
-    document.getElementById('error-box').classList.add('show');
-    document.getElementById('error-msg').textContent = e.message || 'Lỗi không xác định.';
-  }
-}
-
-function render() {
+function renderExercise() {
+  const sentences = DATA[curLv][curSet];
   const d = sentences[cur];
   document.getElementById('vi-text').textContent = d.vi;
   document.getElementById('topic-tag').textContent = d.topic;
@@ -784,12 +652,10 @@ function render() {
   document.getElementById('ans-grammar').textContent = d.grammar;
 
   const vocabEl = document.getElementById('ans-vocab');
-  vocabEl.innerHTML = (d.vocab || []).map(v =>
-    `<span class="vocab-item"><strong>${v.word}</strong> = ${v.meaning}</span>`
-  ).join('');
+  vocabEl.innerHTML = d.vocab.map(v => `<span class="vocab-item"><strong>${v.w}</strong> = ${v.m}</span>`).join('');
 
   document.getElementById('prog-text').textContent = (cur+1) + ' / 10';
-  document.getElementById('prog-fill').style.width = ((cur+1) * 10) + '%';
+  document.getElementById('prog-fill').style.width = ((cur+1)*10) + '%';
   document.getElementById('answer-box').classList.remove('show');
   document.getElementById('user-input').value = '';
   document.getElementById('btn-prev').disabled = cur === 0;
@@ -816,40 +682,48 @@ function reveal() {
 }
 
 function next() {
-  if (cur < 9) { cur++; render(); }
+  if (cur < 9) { cur++; renderExercise(); }
   else {
     document.getElementById('exercise-area').style.display = 'none';
     document.getElementById('done-screen').classList.add('show');
-    document.getElementById('done-lv').textContent = 'HSK' + curLevel;
+    document.getElementById('done-lv').textContent = 'HSK' + curLv;
     document.getElementById('done-day').textContent = getDay();
   }
 }
 
 function prev() {
-  if (cur > 0) { cur--; render(); }
+  if (cur > 0) { cur--; renderExercise(); }
 }
 
 function restart() {
   cur = 0;
   document.getElementById('done-screen').classList.remove('show');
-  document.getElementById('exercise-area').style.display = 'block';
-  render();
+  document.getElementById('exercise-area').style.display = '';
+  renderExercise();
 }
 
-// Keyboard
+function nextSet() {
+  const sets = DATA[curLv];
+  const nextIdx = (curSet + 1) % sets.length;
+  const btns = document.querySelectorAll('.set-btn');
+  curSet = nextIdx;
+  cur = 0;
+  btns.forEach((b,i) => b.classList.toggle('active', i === nextIdx));
+  document.getElementById('done-screen').classList.remove('show');
+  document.getElementById('exercise-area').style.display = '';
+  renderExercise();
+}
+
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && document.activeElement.id === 'user-input') reveal();
   if (e.key === 'ArrowRight') next();
   if (e.key === 'ArrowLeft') prev();
 });
 
-// Init
 document.getElementById('streak').textContent = getDay();
 document.getElementById('done-day').textContent = getDay();
-
-if (loadStoredKey()) {
-  loadSet();
-}
+buildSetBtns();
+renderExercise();
 </script>
 </body>
 </html>

@@ -134,6 +134,7 @@ header {
   margin-bottom: 1.25rem;
   box-shadow: 0 4px 24px rgba(200,140,100,0.08);
   animation: cardIn 0.3s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden; max-width: 100%;
 }
 @keyframes cardIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
 
@@ -190,11 +191,13 @@ input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rg
   border-right: 1.5px solid var(--border);
   border-bottom: 1.5px solid var(--border);
   display: none; animation: fadeIn 0.25s ease;
+  overflow-wrap: break-word; word-break: break-word;
+  overflow: hidden; max-width: 100%;
 }
 .answer-box.show { display: block; }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
-.ans-zh { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+.ans-zh { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.5; overflow-wrap: break-word; word-break: break-all; }
 .ans-py { font-size: 14px; color: var(--accent); margin-bottom: 12px; font-style: italic; font-weight: 600; }
 
 .vocab-label, .grammar-label {
@@ -241,10 +244,36 @@ input[type="text"]:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rg
 .done-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
 @media (max-width: 600px) {
-  .vi-text { font-size: 18px; }
-  .ans-zh { font-size: 19px; }
-  .level-btn { min-width: 58px; }
-  .lv-badge { font-size: 13px; }
+  .wrap { padding: 0 0.85rem 4rem; }
+  header { padding: 1rem 0; }
+  .brand-zh { font-size: 14px; }
+  .brand-vi { font-size: 11px; }
+  .brand-icon { width: 30px; height: 30px; font-size: 13px; border-radius: 8px; }
+  .streak-pill { padding: 4px 10px; font-size: 12px; }
+  .level-grid { gap: 5px; }
+  .level-btn { min-width: 0; flex: 1; padding: 8px 4px; border-radius: 10px; }
+  .lv-badge { font-size: 12px; }
+  .lv-name { font-size: 9px; }
+  .ex-card { padding: 1.1rem; }
+  .vi-text { font-size: 17px; margin-bottom: 1.1rem; padding-bottom: 1rem; }
+  .input-row { flex-direction: column; gap: 8px; }
+  input[type="text"] { font-size: 16px; width: 100%; box-sizing: border-box; }
+  .input-row .btn { width: 100%; text-align: center; }
+  .answer-box { padding: 0.9rem 0.9rem; overflow-wrap: break-word; word-break: break-word; }
+  .ans-zh { font-size: 17px; line-height: 1.5; }
+  .ans-py { font-size: 12px; }
+  .vocab-item { font-size: 12px; padding: 3px 8px; max-width: 100%; }
+  .ans-grammar { font-size: 12px; padding: 7px 9px; }
+  .nav-row { gap: 6px; }
+  .nav-row .btn { padding: 9px 12px; font-size: 13px; }
+  .dots { gap: 4px; }
+  .dot { width: 5px; height: 5px; }
+  .done-stats { gap: 8px; }
+  .stat { min-width: 80px; padding: 0.75rem 1rem; }
+  .stat-n { font-size: 22px; }
+  .set-row { gap: 5px; }
+  .set-btn { padding: 3px 10px; font-size: 11px; }
+  .card-top { margin-bottom: 1rem; }
 }
 </style>
 </head>
